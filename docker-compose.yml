@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  otus.ha.sn.web.api:
+    image: ${DOCKER_REGISTRY-}otushasnwebapi
+    container_name: web_api_application
+    hostname: web_api
+    build:
+      context: .
+      dockerfile: ./src/Api/OTUS.HA.SN.Web.Api/Dockerfile
+  db:
+    image: postgres:15.4
+    container_name: postgres_db
+    hostname: postgres_db
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sh:/docker-entrypoint-initdb.d/init.sh

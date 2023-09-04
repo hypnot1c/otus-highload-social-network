@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "e4f88509-4833-4a8a-976d-81b0d0fa2ec5",
+		"name": "OTUS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6360750"
+	},
+	"item": [
+		{
+			"name": "Highload Architect",
+			"item": [
+				{
+					"name": "Social network",
+					"item": [
+						{
+							"name": "Users",
+							"item": [
+								{
+									"name": "Register",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"first_name\": \"Имя\",\r\n  \"second_name\": \"Фамилия\",\r\n  \"birthdate\": \"2017-02-01\",\r\n  \"biography\": \"Хобби, интересы и т.п.\",\r\n  \"city\": \"Москва\",\r\n  \"password\": \"Секретная строка\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{OTUS.HS.SN.Web.Api}}/v1/users/register",
+											"host": [
+												"{{OTUS.HS.SN.Web.Api}}"
+											],
+											"path": [
+												"v1",
+												"users",
+												"register"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get by id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{OTUS.HS.SN.Web.Api}}/v1/users/get/:id",
+											"host": [
+												"{{OTUS.HS.SN.Web.Api}}"
+											],
+											"path": [
+												"v1",
+												"users",
+												"get",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1d710faa-85bc-4f2a-9e51-31edb8e63b26"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Login",
+							"item": [
+								{
+									"name": "Login",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"1d710faa-85bc-4f2a-9e51-31edb8e63b26\",\r\n    \"password\": \"Секретная строка\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{OTUS.HS.SN.Web.Api}}/v1/login",
+											"host": [
+												"{{OTUS.HS.SN.Web.Api}}"
+											],
+											"path": [
+												"v1",
+												"login"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjlmNTY5NWEyLTk4YzctNDc3Yi1hODViLTE5YTE3NmM2YWM3MSIsInN1YiI6ImUxYWU3MjNiLTMwMzktNGFkNS04ZjdiLWY5ZWRjNjhjNGRkOCIsImp0aSI6IjFjYTgzZDVmLTU3Y2ItNDNmMS04YjI0LWY4YTQ0NmZkMDE1NSIsIm5iZiI6MTY5MzY3NjgxNSwiZXhwIjoxNjkzNjc3MTE1LCJpYXQiOjE2OTM2NzY4MTUsImlzcyI6Imh0dHBzOi8vdGVzdC5jb20vIiwiYXVkIjoiaHR0cHM6Ly90ZXN0LmNvbS8ifQ.Pyj5bha26e7LvcQ5xvwLP7P8H4OXaBLgI6XhS_xZnaIPN34twdb7tyrWNT1881pIYjiEqGqMVxlPcEh93Ysicw",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

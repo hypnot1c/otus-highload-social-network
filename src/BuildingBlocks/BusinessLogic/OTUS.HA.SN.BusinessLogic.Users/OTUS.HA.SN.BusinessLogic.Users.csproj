@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <AssemblyName>$(MSBuildProjectName.Replace(".Users", ""))</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.1.1" />
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataAccess\OTUS.HS.SN.Data.Master.Context\OTUS.HS.SN.Data.Master.Context.csproj" />
+    <ProjectReference Include="..\OTUS.HA.SN.BusinessLogic.Abstractions\OTUS.HA.SN.BusinessLogic.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

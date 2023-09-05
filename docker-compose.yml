@@ -5,6 +5,9 @@ services:
     image: ${DOCKER_REGISTRY-}otushasnwebapi
     container_name: web_api_application
     hostname: web_api
+    ports:
+      - "5080:80"
+      - "5443:433"
     build:
       context: .
       dockerfile: ./src/Api/OTUS.HA.SN.Web.Api/Dockerfile

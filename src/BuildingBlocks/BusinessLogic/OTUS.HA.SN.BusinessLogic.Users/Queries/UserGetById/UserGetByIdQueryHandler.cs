@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,14 +26,31 @@ namespace OTUS.HA.SN.BusinessLogic
 
     public async Task<UserGetByIdQueryResult> Handle(UserGetByIdQuery request, CancellationToken cancellationToken)
     {
-      var user = await this.Mapper.ProjectTo<UserGetByIdQueryResult>(
-        this.MasterContext.Users
-          .Where(u => u.PublicId == request.Id)
-        )
-        .SingleOrDefaultAsync(cancellationToken)
-        ;
+      UserGetByIdQueryResult result;
+      try
+      {
+        result = await this.Mapper.ProjectTo<UserGetByIdQueryResult>(
+          this.MasterContext.Users
+            .Where(u => u.PublicId == request.Id)
+          )
+          .SingleOrDefaultAsync(cancellationToken)
+          ;
 
-      return user;
+        if (result is not null)
+        {
+          result.Status = StatusEnum.Ok;
+          return result;
+        }
+      }
+      catch (Exception ex)
+      {
+        result = new UserGetByIdQueryResult(new UnexpectedResultError(ex));
+        return result;
+      }
+
+      result = new UserGetByIdQueryResult(new NotFoundResultError());
+
+      return result;
     }
   }
 }

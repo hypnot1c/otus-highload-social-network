@@ -27,11 +27,22 @@ namespace OTUS.HA.SN.BusinessLogic
 
       userDBO.PasswordHash = GetPasswordHash(request.Password);
 
-
       this.MasterContext.Users.Add(userDBO);
-      await this.MasterContext.SaveChangesAsync(cancellationToken);
 
-      var result = this.Mapper.Map<UserRegistationCommandResult>(userDBO);
+      UserRegistationCommandResult result;
+      try
+      {
+        await this.MasterContext.SaveChangesAsync(cancellationToken);
+      }
+      catch (Exception ex)
+      {
+        result = new UserRegistationCommandResult(new UnexpectedResultError(ex));
+        return result;
+      }
+
+      result = this.Mapper.Map<UserRegistationCommandResult>(userDBO);
+      result.Status = StatusEnum.Ok;
+
       return result;
     }
 

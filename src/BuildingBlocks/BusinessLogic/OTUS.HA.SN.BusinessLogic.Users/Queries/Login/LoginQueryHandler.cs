@@ -30,13 +30,30 @@ namespace OTUS.HA.SN.BusinessLogic
     {
       var hash = this.GetPasswordHash(request.Password);
 
-      var result = await this.Mapper.ProjectTo<LoginQueryResult>(
-        this.MasterContext.Users
-        .Where(u => u.PublicId == request.Id)
-        .Where(u => u.PasswordHash == hash)
-        )
-        .SingleOrDefaultAsync(cancellationToken)
-        ;
+      LoginQueryResult result;
+      try
+      {
+        result = await this.Mapper.ProjectTo<LoginQueryResult>(
+          this.MasterContext.Users
+          .Where(u => u.PublicId == request.Id)
+          .Where(u => u.PasswordHash == hash)
+          )
+          .SingleOrDefaultAsync(cancellationToken)
+          ;
+
+        if (result is not null)
+        {
+          result.Status = StatusEnum.Ok;
+          return result;
+        }
+      }
+      catch (Exception ex)
+      {
+        result = new LoginQueryResult(new UnexpectedResultError(ex));
+        return result;
+      }
+
+      result = new LoginQueryResult(new NotFoundResultError());
 
       return result;
     }

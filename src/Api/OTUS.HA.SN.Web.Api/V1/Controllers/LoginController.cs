@@ -50,16 +50,29 @@ namespace OTUS.HA.SN.Web.Api.V1.Controllers
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(NotFoundResultError), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Login(LoginInputModel im, CancellationToken cancellationToken)
     {
       var loginQuery = this.Mapper.Map<LoginQuery>(im);
 
       var loginQueryResult = await this.Mediator.Send(loginQuery, cancellationToken);
 
-      var userPrincipal = this.Mapper.Map<UserPrincipalModel>(loginQueryResult);
+      if (loginQueryResult.Status == StatusEnum.Ok)
+      {
+        var userPrincipal = this.Mapper.Map<UserPrincipalModel>(loginQueryResult);
 
-      var token = this.JwtTokenService.GetToken(userPrincipal);
-      return Ok(new LoginOutputModel(token));
+        var token = this.JwtTokenService.GetToken(userPrincipal);
+        return Ok(new LoginOutputModel(token));
+      }
+
+      if (loginQueryResult.Error is NotFoundResultError notFound)
+      {
+        return NotFound(notFound);
+      }
+
+      return StatusCode(StatusCodes.Status500InternalServerError);
     }
   }
 }

@@ -37,15 +37,38 @@ namespace OTUS.HA.SN.Web.Api.V1.Controllers
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     [HttpGet("get/{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(NotFoundResultError), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetById(string id, CancellationToken cancellationToken)
     {
-      var query = new UserGetByIdQuery(Guid.Parse(id));
+      var query = new UserGetByIdQuery(Guid.Empty);
+      try
+      {
+        query = new UserGetByIdQuery(Guid.Parse(id));
+      }
+      catch (Exception ex)
+      {
+        this.Logger.LogError(ex, "Invalid id format");
+        return BadRequest("Invalid id format");
+      }
 
       var queryResult = await this.Mediator.Send(query, cancellationToken);
 
-      var result = this._mapper.Map<UserGetByIdOutputModel>(queryResult);
+      if (queryResult.Status == StatusEnum.Ok)
+      {
+        var result = this._mapper.Map<UserGetByIdOutputModel>(queryResult);
 
-      return Ok(result);
+        return Ok(result);
+      }
+
+      if (queryResult.Error is NotFoundResultError notFound)
+      {
+        return NotFound(notFound);
+      }
+
+      return StatusCode(StatusCodes.Status500InternalServerError);
     }
 
     /// <summary>
@@ -58,15 +81,20 @@ namespace OTUS.HA.SN.Web.Api.V1.Controllers
     [AllowAnonymous]
     [HttpPost("register")]
     [ProducesResponseType(typeof(UserRegistrationOutputModel), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Register(UserRegistrationInputModel im, CancellationToken cancellationToken)
     {
       var command = this._mapper.Map<UserRegistationCommand>(im);
 
       var commandResult = await this.Mediator.Send(command, cancellationToken);
 
-      var result = this._mapper.Map<UserRegistrationOutputModel>(commandResult);
+      if (commandResult.Status == StatusEnum.Ok)
+      {
+        var result = this._mapper.Map<UserRegistrationOutputModel>(commandResult);
+        return Ok(result);
+      }
 
-      return Ok(result);
+      return StatusCode(StatusCodes.Status500InternalServerError);
     }
   }
 }

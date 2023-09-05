@@ -2,8 +2,19 @@ using System;
 
 namespace OTUS.HA.SN.BusinessLogic
 {
-  public class UserGetByIdQueryResult
+  public class UserGetByIdQueryResult : BaseRequestResult
   {
+    public UserGetByIdQueryResult()
+    {
+
+    }
+    public UserGetByIdQueryResult(
+      ResultError error
+      )
+    {
+      this.Error = error;
+    }
+
     public Guid Id { get; set; }
     public string Firstname { get; set; }
     public string Secondname { get; set; }

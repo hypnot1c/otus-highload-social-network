@@ -15,14 +15,22 @@ namespace OTUS.HA.SN.BusinessLogic
         ;
 
       CreateMap<UserModel, UserRegistationCommandResult>()
+        .IncludeBase<UserModel, BaseRequestResult>()
         .ForMember(d => d.UserId, opt => opt.MapFrom(s => s.PublicId))
         ;
 
+      CreateMap<UserModel, BaseRequestResult>()
+        .ForMember(d => d.Status, opt => opt.Ignore())
+        .ForMember(d => d.Error, opt => opt.Ignore())
+        ;
+
       CreateMap<UserModel, UserGetByIdQueryResult>()
+        .IncludeBase<UserModel, BaseRequestResult>()
         .ForMember(d => d.Id, opt => opt.MapFrom(s => s.PublicId))
         ;
 
       CreateMap<UserModel, LoginQueryResult>()
+        .IncludeBase<UserModel, BaseRequestResult>()
         .ForMember(d => d.Id, opt => opt.MapFrom(s => s.PublicId))
         ;
     }

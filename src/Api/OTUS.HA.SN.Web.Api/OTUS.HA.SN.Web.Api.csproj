@@ -28,6 +28,7 @@
     <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Model.Input\OTUS.HA.SN.Web.Api.Model.Input.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Model.Output\OTUS.HA.SN.Web.Api.Model.Output.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Users\OTUS.HA.SN.BusinessLogic.Users.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Extensions\AspNetCore\Microsoft.AspNetCode.Mvc.Filters\Microsoft.AspNetCode.Mvc.Filters.csproj" />
   </ItemGroup>
 
 </Project>

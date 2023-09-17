@@ -56,6 +56,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{EFC80F
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{19BE487F-F7C9-4F33-8113-019C440DE04B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cryptography", "Cryptography", "{C0A0C5B1-BEBE-4C9D-8237-B1C2CFE51BF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Security.Cryptography.Extensions", "src\BuildingBlocks\Extensions\Cryptography\System.Security.Cryptography.Extensions\System.Security.Cryptography.Extensions.csproj", "{99CC0C66-3848-44CE-91C8-39860AC86F9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNetCore", "AspNetCore", "{F391905A-1342-45D0-931F-F967CB1A0A8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNetCode.Mvc.Filters", "src\BuildingBlocks\Extensions\AspNetCore\Microsoft.AspNetCode.Mvc.Filters\Microsoft.AspNetCode.Mvc.Filters.csproj", "{E451C64C-4DF2-4DEF-BB7A-C98B0FFA734B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,6 +114,14 @@ Global
 		{19BE487F-F7C9-4F33-8113-019C440DE04B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19BE487F-F7C9-4F33-8113-019C440DE04B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19BE487F-F7C9-4F33-8113-019C440DE04B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99CC0C66-3848-44CE-91C8-39860AC86F9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99CC0C66-3848-44CE-91C8-39860AC86F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99CC0C66-3848-44CE-91C8-39860AC86F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99CC0C66-3848-44CE-91C8-39860AC86F9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E451C64C-4DF2-4DEF-BB7A-C98B0FFA734B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E451C64C-4DF2-4DEF-BB7A-C98B0FFA734B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E451C64C-4DF2-4DEF-BB7A-C98B0FFA734B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E451C64C-4DF2-4DEF-BB7A-C98B0FFA734B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,6 +149,10 @@ Global
 		{D71870EF-8A41-46EB-B6E4-FA8163D0A538} = {B716F4B4-681B-4C2E-B8DE-9C88811DE55E}
 		{5308D3B7-FF3C-41FB-A8AB-E25D3F161AF8} = {D71870EF-8A41-46EB-B6E4-FA8163D0A538}
 		{EFC80F85-8208-4DF0-A01E-1901332163CD} = {E04100F5-10EA-47F2-8A04-6A7B6B5A804D}
+		{C0A0C5B1-BEBE-4C9D-8237-B1C2CFE51BF8} = {A97676D5-09E5-4ABC-8BE3-6514B10C19BF}
+		{99CC0C66-3848-44CE-91C8-39860AC86F9A} = {C0A0C5B1-BEBE-4C9D-8237-B1C2CFE51BF8}
+		{F391905A-1342-45D0-931F-F967CB1A0A8A} = {A97676D5-09E5-4ABC-8BE3-6514B10C19BF}
+		{E451C64C-4DF2-4DEF-BB7A-C98B0FFA734B} = {F391905A-1342-45D0-931F-F967CB1A0A8A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60CA8CD7-A4B2-4BC2-A785-31E8A26B575A}

@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -28,7 +27,7 @@ namespace OTUS.HA.SN.BusinessLogic
 
     public async Task<LoginQueryResult> Handle(LoginQuery request, CancellationToken cancellationToken)
     {
-      var hash = this.GetPasswordHash(request.Password);
+      var hash = request.Password.GetPasswordHash();
 
       LoginQueryResult result;
       try
@@ -56,18 +55,6 @@ namespace OTUS.HA.SN.BusinessLogic
       result = new LoginQueryResult(new NotFoundResultError());
 
       return result;
-    }
-
-    private string GetPasswordHash(string password)
-    {
-      var bytes = Encoding.Unicode.GetBytes(password);
-      var hash = SHA256.Create().ComputeHash(bytes);
-      string hashString = string.Empty;
-      foreach (var x in hash)
-      {
-        hashString += String.Format("{0:x2}", x);
-      }
-      return hashString;
     }
   }
 }

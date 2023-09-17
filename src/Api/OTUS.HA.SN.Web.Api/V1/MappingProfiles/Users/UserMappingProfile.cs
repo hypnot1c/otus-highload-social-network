@@ -6,8 +6,14 @@ using OTUS.HA.SN.Web.Api.Model.Output;
 
 namespace OTUS.HA.SN.Web.Api.V1.MappingProfiles
 {
+  /// <summary>
+  /// 
+  /// </summary>
   public class UserMappingProfile : Profile
   {
+    /// <summary>
+    /// 
+    /// </summary>
     public UserMappingProfile()
     {
       CreateMap<UserRegistrationInputModel, UserRegistationCommand>()

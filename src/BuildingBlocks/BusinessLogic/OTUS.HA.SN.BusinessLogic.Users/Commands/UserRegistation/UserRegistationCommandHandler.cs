@@ -1,6 +1,5 @@
 using System;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -25,7 +24,7 @@ namespace OTUS.HA.SN.BusinessLogic
     {
       var userDBO = this.Mapper.Map<UserModel>(request);
 
-      userDBO.PasswordHash = GetPasswordHash(request.Password);
+      userDBO.PasswordHash = request.Password.GetPasswordHash();
 
       this.MasterContext.Users.Add(userDBO);
 
@@ -44,18 +43,6 @@ namespace OTUS.HA.SN.BusinessLogic
       result.Status = StatusEnum.Ok;
 
       return result;
-    }
-
-    private string GetPasswordHash(string password)
-    {
-      var bytes = Encoding.Unicode.GetBytes(password);
-      var hash = SHA256.Create().ComputeHash(bytes);
-      string hashString = string.Empty;
-      foreach (var x in hash)
-      {
-        hashString += String.Format("{0:x2}", x);
-      }
-      return hashString;
     }
   }
 }

@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging;
+
 namespace Microsoft.AspNetCore.Mvc.Filters
 {
   public class GlobalExceptionFilter : IAsyncExceptionFilter, IExceptionFilter

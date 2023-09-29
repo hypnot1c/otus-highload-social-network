@@ -11,12 +11,16 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-E
 
 	GRANT USAGE ON SCHEMA public TO web_api;
 
+	GRANT pg_read_server_files TO web_api;
+
 	GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO web_api;
 EOSQL
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "otus_social_network" <<-EOSQL
 	GRANT ALL ON SCHEMA public TO web_api;
 EOSQL
+
+pgbench -i -U web_api otus_social_network
 
 psql -v ON_ERROR_STOP=1 --username "web_api" --dbname "otus_social_network" <<-EOSQL
 	CREATE TABLE "User" (
@@ -29,4 +33,10 @@ psql -v ON_ERROR_STOP=1 --username "web_api" --dbname "otus_social_network" <<-E
 		"City"          varchar(100),
 		"PasswordHash"  varchar(300)
 	);
+
+	CREATE INDEX "User_Firstname_Secondname_Lower" ON "User" (Lower("Firstname") varchar_pattern_ops, Lower("Secondname") varchar_pattern_ops);
+EOSQL
+
+psql -v ON_ERROR_STOP=1 --username "web_api" --dbname "otus_social_network" <<-EOSQL
+	COPY "User" ("PublicId", "Firstname", "Secondname", "BirthDate", "Biography", "City", "PasswordHash") FROM '/docker-entrypoint-initdb.d/user_data.copy'
 EOSQL

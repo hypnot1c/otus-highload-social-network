@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "OTUS.HS.SN.DB.Data": {
+      "commandName": "Project",
+      "commandLineArgs": ""
+    }
+  }
+}

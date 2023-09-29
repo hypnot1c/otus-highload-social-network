@@ -1,4 +1,3 @@
-using System.Reflection;
 using AutoMapper;
 using Microsoft.OpenApi.Models;
 using OTUS.HA.SN.Auth.Jwt;
@@ -7,13 +6,12 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 typeof(Program)
   .Assembly
   .GetTypes()
   .Where(t => t.IsClass && t.GetInterfaces().Any(ti => ti == typeof(IWebApplicationBuilderConfigurator)))
   .ToList()
-  .ForEach(t => t.GetMethod("AddServices", BindingFlags.Static)?.Invoke(null, new object[] { builder }))
+  .ForEach(t => t.GetMethod("AddServices")?.Invoke(null, new object[] { builder }))
 ;
 
 

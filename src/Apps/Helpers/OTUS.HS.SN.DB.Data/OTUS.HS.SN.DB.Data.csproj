@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" />
+    <PackageReference Include="PowerArgs" />
+    <PackageReference Include="System.Text.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.Master.Model\OTUS.HS.SN.Data.Master.Model.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Extensions\Cryptography\System.Security.Cryptography.Extensions\System.Security.Cryptography.Extensions.csproj" />
+  </ItemGroup>
+</Project>

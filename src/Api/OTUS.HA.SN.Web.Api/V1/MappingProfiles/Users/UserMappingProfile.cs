@@ -36,6 +36,10 @@ namespace OTUS.HA.SN.Web.Api.V1.MappingProfiles
         .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id.ToString()))
         .ForMember(d => d.FullName, opt => opt.MapFrom(s => $"{s.Firstname} {s.Secondname}"));
       ;
+
+      CreateMap<UserSearchQueryResult, UserSearchOutputModel>()
+        .ForMember(d => d.Items, opt => opt.MapFrom(s => s.Items))
+        ;
     }
   }
 }

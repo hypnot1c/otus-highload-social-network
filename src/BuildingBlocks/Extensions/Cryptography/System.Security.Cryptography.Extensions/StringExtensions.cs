@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Text;
 
 namespace System.Security.Cryptography
@@ -8,11 +9,12 @@ namespace System.Security.Cryptography
     {
       var bytes = Encoding.Unicode.GetBytes(password);
       var hash = SHA256.HashData(bytes);
-      string hashString = String.Empty;
-      foreach (var x in hash)
-      {
-        hashString += String.Format("{0:x2}", x);
-      }
+
+      string hashString = String.Join(
+        String.Empty,
+        hash.Select(s => String.Format("{0:x2}", s))
+        );
+
       return hashString;
     }
   }

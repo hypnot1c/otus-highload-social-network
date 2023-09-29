@@ -71,6 +71,35 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "Search",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{OTUS.HS.SN.Web.Api}}/v1/users/search?firstname=Wil&lastname=Tur",
+											"host": [
+												"{{OTUS.HS.SN.Web.Api}}"
+											],
+											"path": [
+												"v1",
+												"users",
+												"search"
+											],
+											"query": [
+												{
+													"key": "firstname",
+													"value": "Wil"
+												},
+												{
+													"key": "lastname",
+													"value": "Tur"
+												}
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
@@ -87,7 +116,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"id\": \"1d710faa-85bc-4f2a-9e51-31edb8e63b26\",\r\n    \"password\": \"Секретная строка\"\r\n}",
+											"raw": "{\r\n    \"id\": \"944edb3c-8488-b5e3-974a-f65b45d944f0\",\r\n    \"password\": \"password\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -115,7 +144,7 @@
 						"bearer": [
 							{
 								"key": "token",
-								"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjlmNTY5NWEyLTk4YzctNDc3Yi1hODViLTE5YTE3NmM2YWM3MSIsInN1YiI6ImUxYWU3MjNiLTMwMzktNGFkNS04ZjdiLWY5ZWRjNjhjNGRkOCIsImp0aSI6IjFjYTgzZDVmLTU3Y2ItNDNmMS04YjI0LWY4YTQ0NmZkMDE1NSIsIm5iZiI6MTY5MzY3NjgxNSwiZXhwIjoxNjkzNjc3MTE1LCJpYXQiOjE2OTM2NzY4MTUsImlzcyI6Imh0dHBzOi8vdGVzdC5jb20vIiwiYXVkIjoiaHR0cHM6Ly90ZXN0LmNvbS8ifQ.Pyj5bha26e7LvcQ5xvwLP7P8H4OXaBLgI6XhS_xZnaIPN34twdb7tyrWNT1881pIYjiEqGqMVxlPcEh93Ysicw",
+								"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6Ijk0NGVkYjNjLTg0ODgtYjVlMy05NzRhLWY2NWI0NWQ5NDRmMCIsInN1YiI6Ijk0NGVkYjNjLTg0ODgtYjVlMy05NzRhLWY2NWI0NWQ5NDRmMCIsIm5hbWUiOiJTaGF1biBDb3JrZXJ5IiwianRpIjoiZmFjNjA3OTQtM2VkYi00MmIzLWFkOWMtYTc2ZTJjODc1NDE4IiwibmJmIjoxNjk1OTcwMDI3LCJleHAiOjE2OTU5NzAzMjcsImlhdCI6MTY5NTk3MDAyNywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE3NiIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcxNzYifQ.T_r-fq8DekD13THcov3ZsLlwXhywztRIf57m5Tr9Fl_IOuwSX385RfI3O354HUOyzWrGY9Cmpl5idm6K4s-IJA",
 								"type": "string"
 							}
 						]

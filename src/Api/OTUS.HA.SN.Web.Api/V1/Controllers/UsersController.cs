@@ -31,6 +31,32 @@ namespace OTUS.HA.SN.Web.Api.V1.Controllers
     private readonly IMapper _mapper;
 
     /// <summary>
+    /// Регистрация нового пользователя
+    /// </summary>
+    /// <param name="im"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    /// <response code="200">Успешная регистрация</response>
+    [AllowAnonymous]
+    [HttpPost("register")]
+    [ProducesResponseType(typeof(UserRegistrationOutputModel), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> Register(UserRegistrationInputModel im, CancellationToken cancellationToken)
+    {
+      var command = this._mapper.Map<UserRegistationCommand>(im);
+
+      var commandResult = await this.Mediator.Send(command, cancellationToken);
+
+      if (commandResult.Status == StatusEnum.Ok)
+      {
+        var result = this._mapper.Map<UserRegistrationOutputModel>(commandResult);
+        return Ok(result);
+      }
+
+      return StatusCode(StatusCodes.Status500InternalServerError);
+    }
+
+    /// <summary>
     /// 
     /// </summary>
     /// <param name="id"></param>
@@ -72,29 +98,24 @@ namespace OTUS.HA.SN.Web.Api.V1.Controllers
     }
 
     /// <summary>
-    /// Регистрация нового пользователя
+    /// 
     /// </summary>
     /// <param name="im"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    /// <response code="200">Успешная регистрация</response>
-    [AllowAnonymous]
-    [HttpPost("register")]
-    [ProducesResponseType(typeof(UserRegistrationOutputModel), StatusCodes.Status200OK)]
+    [HttpGet("search")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Register(UserRegistrationInputModel im, CancellationToken cancellationToken)
+    public async Task<IActionResult> Search([FromQuery] UserSearchInputModel im, CancellationToken cancellationToken)
     {
-      var command = this._mapper.Map<UserRegistationCommand>(im);
+      var query = new UserSearchQuery(im.Firstname, im.Lastname);
 
-      var commandResult = await this.Mediator.Send(command, cancellationToken);
+      var queryResult = await this.Mediator.Send(query, cancellationToken);
 
-      if (commandResult.Status == StatusEnum.Ok)
-      {
-        var result = this._mapper.Map<UserRegistrationOutputModel>(commandResult);
-        return Ok(result);
-      }
+      var result = this._mapper.Map<UserSearchOutputModel>(queryResult);
 
-      return StatusCode(StatusCodes.Status500InternalServerError);
+      return Ok(result.Items);
     }
   }
 }

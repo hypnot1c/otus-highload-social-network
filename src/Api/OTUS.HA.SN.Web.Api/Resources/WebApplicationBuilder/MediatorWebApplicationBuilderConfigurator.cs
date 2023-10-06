@@ -2,7 +2,7 @@ namespace OTUS.HA.SN.Web.Api.Resources;
 
 internal class MediatorWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator
 {
-  public static WebApplicationBuilder AddServices(WebApplicationBuilder builder)
+  public WebApplicationBuilder AddServices(WebApplicationBuilder builder, IConfiguration config)
   {
     builder.Services.AddMediatR(cfg =>
     {

@@ -7,7 +7,7 @@ namespace OTUS.HA.SN.Web.Api.Resources;
 
 internal class AspNetCoreMvcWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator
 {
-  public static WebApplicationBuilder AddServices(WebApplicationBuilder builder)
+  public WebApplicationBuilder AddServices(WebApplicationBuilder builder, IConfiguration config)
   {
     builder.Services.AddControllers(opt =>
     {

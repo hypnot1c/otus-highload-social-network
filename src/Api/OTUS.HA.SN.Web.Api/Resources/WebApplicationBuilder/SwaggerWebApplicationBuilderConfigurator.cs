@@ -5,7 +5,7 @@ namespace OTUS.HA.SN.Web.Api.Resources;
 
 internal class SwaggerWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator
 {
-  public static WebApplicationBuilder AddServices(WebApplicationBuilder builder)
+  public WebApplicationBuilder AddServices(WebApplicationBuilder builder, IConfiguration config)
   {
     builder.Services.AddSwaggerGen(c =>
     {

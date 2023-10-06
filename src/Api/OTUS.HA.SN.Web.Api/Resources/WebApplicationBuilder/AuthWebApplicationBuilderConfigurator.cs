@@ -6,7 +6,7 @@ namespace OTUS.HA.SN.Web.Api.Resources;
 
 internal class AuthWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator
 {
-  public static WebApplicationBuilder AddServices(WebApplicationBuilder builder)
+  public WebApplicationBuilder AddServices(WebApplicationBuilder builder, IConfiguration config)
   {
     builder.Services.AddAuthentication(options =>
     {

@@ -9,10 +9,17 @@ var builder = WebApplication.CreateBuilder(args);
 typeof(Program)
   .Assembly
   .GetTypes()
-  .Where(t => t.IsClass && t.GetInterfaces().Any(ti => ti == typeof(IWebApplicationBuilderConfigurator)))
+  .Where(t =>
+    t.IsClass
+    &&
+    !t.IsAbstract
+    &&
+    t.GetInterfaces().Any(ti => ti == typeof(IWebApplicationBuilderConfigurator))
+    )
+  .Select(Activator.CreateInstance)
   .ToList()
-  .ForEach(t => t.GetMethod("AddServices")?.Invoke(null, new object[] { builder }))
-;
+  .ForEach(t => t.GetType().GetMethod("AddServices").Invoke(t, new object[] { builder, builder.Configuration }))
+  ;
 
 
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();

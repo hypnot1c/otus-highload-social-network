@@ -21,22 +21,3 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "otus_social_networ
 EOSQL
 
 pgbench -i -U web_api otus_social_network
-
-psql -v ON_ERROR_STOP=1 --username "web_api" --dbname "otus_social_network" <<-EOSQL
-	CREATE TABLE "User" (
-		"Id"            SERIAL NOT NULL,
-		"PublicId"      uuid NOT NULL,
-		"Firstname"     varchar(100) NOT NULL,
-		"Secondname"    varchar(200) NOT NULL,
-		"BirthDate"     date,
-		"Biography"     varchar(5000),
-		"City"          varchar(100),
-		"PasswordHash"  varchar(300)
-	);
-
-	CREATE INDEX "User_Firstname_Secondname_Lower" ON "User" (Lower("Firstname") varchar_pattern_ops, Lower("Secondname") varchar_pattern_ops);
-EOSQL
-
-psql -v ON_ERROR_STOP=1 --username "web_api" --dbname "otus_social_network" <<-EOSQL
-	COPY "User" ("PublicId", "Firstname", "Secondname", "BirthDate", "Biography", "City", "PasswordHash") FROM '/docker-entrypoint-initdb.d/user_data.copy'
-EOSQL

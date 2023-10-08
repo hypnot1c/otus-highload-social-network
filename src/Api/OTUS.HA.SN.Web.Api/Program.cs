@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.OpenApi.Models;
 using OTUS.HA.SN.Auth.Jwt;
 using OTUS.HA.SN.Web.Api.Resources;
+using OTUS.HA.SN.Web.Api.Resources.DataBase;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,15 +20,22 @@ typeof(Program)
   .Select(Activator.CreateInstance)
   .ToList()
   .ForEach(t => t.GetType().GetMethod("AddServices").Invoke(t, new object[] { builder, builder.Configuration }))
-  ;
+;
 
-
+builder.Services.AddTransient<DataBaseMigrator>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 
 var app = builder.Build();
 
 var mapper = app.Services.GetRequiredService<IMapper>();
 mapper.ConfigurationProvider.AssertConfigurationIsValid();
+
+using (var scope = app.Services.CreateScope())
+{
+  var migrator = scope.ServiceProvider.GetService<DataBaseMigrator>();
+  await migrator.MigrateDatabase();
+}
+
 
 app.UseRouting();
 app.UseStaticFiles();

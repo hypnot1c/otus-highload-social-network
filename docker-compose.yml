@@ -5,6 +5,8 @@ services:
     image: ${DOCKER_REGISTRY-}otushasnwebapi
     container_name: web_api_application
     hostname: web_api
+    depends_on: 
+      - db
     ports:
       - "5080:80"
       - "5443:443"

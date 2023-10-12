@@ -10,7 +10,7 @@ namespace OTUS.HA.SN.Web.Api.Resources.DataBase
       IConfiguration configuration
       )
     {
-      connectionString = configuration.GetConnectionString("MasterContext");
+      connectionString = configuration.GetConnectionString("MigrationContext");
       this._logger = logger;
     }
 

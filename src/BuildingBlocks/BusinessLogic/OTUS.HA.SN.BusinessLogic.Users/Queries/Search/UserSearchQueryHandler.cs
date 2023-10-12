@@ -13,6 +13,7 @@ namespace OTUS.HA.SN.BusinessLogic
   public class UserSearchQueryHandler : BaseQueryHandler, IRequestHandler<UserSearchQuery, UserSearchQueryResult>
   {
     public UserSearchQueryHandler(
+      Slave1Context slave1Context,
       IMapper mapper,
       MasterContext masterContext,
       ILogger<UserSearchQueryHandler> logger
@@ -22,14 +23,17 @@ namespace OTUS.HA.SN.BusinessLogic
         logger
         )
     {
+      this._slave1Context = slave1Context;
     }
+
+    private Slave1Context _slave1Context;
 
     public async Task<UserSearchQueryResult> Handle(UserSearchQuery request, CancellationToken cancellationToken)
     {
       var result = new UserSearchQueryResult();
       try
       {
-        var query = this.MasterContext.Users.AsQueryable();
+        var query = this._slave1Context.Users.AsQueryable();
 
         if (!String.IsNullOrWhiteSpace(request.Firstname))
           query = query.Where(u => u.Firstname.ToLower().StartsWith(request.Firstname));

@@ -10,6 +10,9 @@ internal class DbContextWebApplicationBuilderConfigurator : IWebApplicationBuild
     builder.Services.AddDbContext<MasterContext>(options => options
       .UseNpgsql(builder.Configuration.GetConnectionString("MasterContext"))
     );
+    builder.Services.AddDbContext<Slave1Context>(options => options
+      .UseNpgsql(builder.Configuration.GetConnectionString("Slave1Context"))
+    );
     //builder.Services.AddDbContext<MasterContext>(options => options.UseInMemoryDatabase("Master"));
 
     return builder;

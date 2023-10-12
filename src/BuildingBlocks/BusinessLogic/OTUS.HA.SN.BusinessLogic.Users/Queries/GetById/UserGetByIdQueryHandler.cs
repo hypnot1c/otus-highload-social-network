@@ -13,6 +13,7 @@ namespace OTUS.HA.SN.BusinessLogic
   public class UserGetByIdQueryHandler : BaseQueryHandler, IRequestHandler<UserGetByIdQuery, UserGetByIdQueryResult>
   {
     public UserGetByIdQueryHandler(
+      Slave1Context slave1Context,
       IMapper mapper,
       MasterContext masterContext,
       ILogger<UserGetByIdQueryHandler> logger
@@ -22,7 +23,10 @@ namespace OTUS.HA.SN.BusinessLogic
         logger
         )
     {
+      this._slave1Context = slave1Context;
     }
+
+    private Slave1Context _slave1Context;
 
     public async Task<UserGetByIdQueryResult> Handle(UserGetByIdQuery request, CancellationToken cancellationToken)
     {
@@ -30,7 +34,7 @@ namespace OTUS.HA.SN.BusinessLogic
       try
       {
         result = await this.Mapper.ProjectTo<UserGetByIdQueryResult>(
-          this.MasterContext.Users
+          this._slave1Context.Users
             .Where(u => u.PublicId == request.Id)
           )
           .SingleOrDefaultAsync(cancellationToken)

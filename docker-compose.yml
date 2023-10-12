@@ -5,29 +5,68 @@ services:
     image: ${DOCKER_REGISTRY-}otushasnwebapi
     container_name: web_api_application
     hostname: web_api
+    networks:
+      - social_network_common
     depends_on: 
-      - db
+      - db-master
+      - db-slave-1
     ports:
       - "5080:80"
       - "5443:443"
     build:
       context: .
       dockerfile: ./src/Api/OTUS.HA.SN.Web.Api/Dockerfile
-  db:
+  db-master:
     image: postgres:15.4
     shm_size: 1gb
-    command:
-      - "postgres"
-      - "-c"
-      - "max_connections=10000"
-      - "-c"
-      - "shared_buffers=256MB"
-    container_name: postgres_db
-    hostname: postgres_db
+    container_name: postgres_db_master
+    hostname: postgres_db_master
+    networks:
+      - social_network_common
     environment:
       POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
     volumes:
+      - ${PG_MASTER_DATA_PATH}:/var/lib/postgresql/data
       - ./deploy/init.sh:/docker-entrypoint-initdb.d/init.sh
       - ./deploy/user_data.copy:/docker-entrypoint-initdb.d/user_data.copy
+      - ./deploy/postgresql.conf:/tmp/postgresql.conf
+      - ./deploy/pg_hba.conf:/tmp/pg_hba.conf
+  db-slave-1:
+    image: postgres:15.4
+    shm_size: 1gb
+    container_name: postgres_db_slave_1
+    hostname: postgres_db_slave_1
+    networks:
+      - social_network_common
+    depends_on: 
+      - db-master
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+     - ${PG_SLAVE_1_DATA_PATH}:/var/lib/postgresql/data
+     - ./deploy/init_slave.sh:/docker-entrypoint-initdb.d/init_slave.sh
+  db-slave-2:
+    image: postgres:15.4
+    shm_size: 1gb
+    container_name: postgres_db_slave_2
+    hostname: postgres_db_slave_2
+    networks:
+      - social_network_common
+    depends_on: 
+      - db-master
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+     - ${PG_SLAVE_2_DATA_PATH}:/var/lib/postgresql/data
+     - ./deploy/init_slave.sh:/docker-entrypoint-initdb.d/init_slave.sh
+networks:
+  social_network_common:
+    name: social_network_common
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.19.0.0/16
+          gateway: 172.19.0.1
+  

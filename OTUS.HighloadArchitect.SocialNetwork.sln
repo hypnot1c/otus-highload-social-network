@@ -50,6 +50,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{E04100F5-10EA-47F2-8A04-6A7B6B5A804D}"
 	ProjectSection(SolutionItems) = preProject
 		deploy\init.sh = deploy\init.sh
+		deploy\init_slave.sh = deploy\init_slave.sh
+		deploy\pg_hba.conf = deploy\pg_hba.conf
+		deploy\postgresql.conf = deploy\postgresql.conf
 		deploy\user_data.copy = deploy\user_data.copy
 	EndProjectSection
 EndProject

@@ -27,13 +27,13 @@ namespace OTUS.HA.SN.Auth.Jwt
       var tokenDescriptor = new SecurityTokenDescriptor
       {
         Subject = new ClaimsIdentity(new[]
-          {
-                new Claim("Id", user.Id),
-                new Claim(JwtRegisteredClaimNames.Sub, user.Id),
-                new Claim(JwtRegisteredClaimNames.Name, user.FullName),
-                new Claim(JwtRegisteredClaimNames.Jti,
+        {
+          new Claim("Id", user.Id),
+          new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+          new Claim(JwtRegisteredClaimNames.Name, user.FullName),
+          new Claim(JwtRegisteredClaimNames.Jti,
                 Guid.NewGuid().ToString())
-             }),
+        }),
         Expires = DateTime.UtcNow.AddMinutes(5),
         Issuer = issuer,
         Audience = audience,

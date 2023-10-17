@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <AssemblyName>$(MSBuildProjectName)</AssemblyName>
-    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_").Replace(".Users", ""))</RootNamespace>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_").Replace(".Friends", ""))</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\DataAccess\OTUS.HS.SN.Data.Master.Context\OTUS.HS.SN.Data.Master.Context.csproj" />
-    <ProjectReference Include="..\..\Extensions\Cryptography\System.Security.Cryptography.Extensions\System.Security.Cryptography.Extensions.csproj" />
     <ProjectReference Include="..\OTUS.HA.SN.BusinessLogic.Abstractions\OTUS.HA.SN.BusinessLogic.Abstractions.csproj" />
   </ItemGroup>
 

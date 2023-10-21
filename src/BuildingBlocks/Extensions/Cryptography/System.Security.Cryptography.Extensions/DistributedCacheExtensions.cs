@@ -3,7 +3,7 @@ using System.Text;
 
 namespace System.Security.Cryptography
 {
-  public static class StringExtensions
+  public static class DistributedCacheExtensions
   {
     public static string GetPasswordHash(this string password)
     {

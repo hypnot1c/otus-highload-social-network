@@ -1,11 +1,11 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using OTUS.HS.SN.Data.DataService;
 using OTUS.HS.SN.Data.Master.Context;
 
 namespace OTUS.HA.SN.BusinessLogic
@@ -13,7 +13,7 @@ namespace OTUS.HA.SN.BusinessLogic
   public class PostFeedGetQueryHandler : BaseQueryHandler, IRequestHandler<PostFeedGetQuery, PostFeedGetQueryResult>
   {
     public PostFeedGetQueryHandler(
-      Slave1Context slave1Context,
+      IDataService dataService,
       IMapper mapper,
       MasterContext masterContext,
       ILogger<PostFeedGetQueryHandler> logger
@@ -23,27 +23,19 @@ namespace OTUS.HA.SN.BusinessLogic
         logger
         )
     {
-      this._slave1Context = slave1Context;
+      this.dataService = dataService;
     }
 
-    private Slave1Context _slave1Context;
+    private readonly IDataService dataService;
 
     public async Task<PostFeedGetQueryResult> Handle(PostFeedGetQuery request, CancellationToken cancellationToken)
     {
       var result = new PostFeedGetQueryResult();
       try
       {
-        result.Items = await this.Mapper.ProjectTo<PostGetByIdQueryResult>(
-          this._slave1Context.Friends
-            .Where(p => p.FriendOne.PublicId == request.UserId || p.FriendTwo.PublicId == request.UserId)
-            .SelectMany(u => u.FriendOne.Posts)
-            .Union(
-              this._slave1Context.Friends
-                .Where(p => p.FriendOne.PublicId == request.UserId || p.FriendTwo.PublicId == request.UserId)
-                .SelectMany(u => u.FriendTwo.Posts)
-                )
+        result.Items = this.Mapper.Map<IEnumerable<PostGetByIdQueryResult>>(
+          await this.dataService.Post_FeedGetForUser(request.UserId, request.Offset, request.Limit, cancellationToken)
           )
-          .ToListAsync(cancellationToken)
           ;
 
         if (result is not null)

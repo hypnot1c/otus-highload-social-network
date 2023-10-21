@@ -84,7 +84,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HS.SN.DB.Data", "src\A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.BusinessLogic.Friends", "src\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Friends\OTUS.HA.SN.BusinessLogic.Friends.csproj", "{2F170A20-5F29-4D26-9C39-F64C01D5A061}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.BusinessLogic.Posts", "src\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Posts\OTUS.HA.SN.BusinessLogic.Posts.csproj", "{F6F5195A-A152-41B3-BC78-10C10771A130}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.BusinessLogic.Posts", "src\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Posts\OTUS.HA.SN.BusinessLogic.Posts.csproj", "{F6F5195A-A152-41B3-BC78-10C10771A130}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HS.SN.Data.DataService.Abstractions", "src\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.DataService.Abstractions\OTUS.HS.SN.Data.DataService.Abstractions.csproj", "{6E12B798-17B2-480A-BEC2-AA2A5D9DD63E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HS.SN.Data.DataService.DistributedCache", "src\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.DataService.DistributedCache\OTUS.HS.SN.Data.DataService.DistributedCache.csproj", "{177D4259-C1D0-422E-B4CF-C709D451F122}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Caching", "Caching", "{E1D3AACC-8286-434C-B404-C4E544B9535D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.Extensions.Caching.Distributed.Extensions", "src\BuildingBlocks\Extensions\Caching\MS.Extensions.Caching.Distributed.Extensions\MS.Extensions.Caching.Distributed.Extensions.csproj", "{19BEA96C-F7A6-4ACA-A57E-577DE6AAA59F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -156,6 +164,18 @@ Global
 		{F6F5195A-A152-41B3-BC78-10C10771A130}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6F5195A-A152-41B3-BC78-10C10771A130}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6F5195A-A152-41B3-BC78-10C10771A130}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E12B798-17B2-480A-BEC2-AA2A5D9DD63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E12B798-17B2-480A-BEC2-AA2A5D9DD63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E12B798-17B2-480A-BEC2-AA2A5D9DD63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E12B798-17B2-480A-BEC2-AA2A5D9DD63E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{177D4259-C1D0-422E-B4CF-C709D451F122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{177D4259-C1D0-422E-B4CF-C709D451F122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{177D4259-C1D0-422E-B4CF-C709D451F122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{177D4259-C1D0-422E-B4CF-C709D451F122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19BEA96C-F7A6-4ACA-A57E-577DE6AAA59F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19BEA96C-F7A6-4ACA-A57E-577DE6AAA59F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19BEA96C-F7A6-4ACA-A57E-577DE6AAA59F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19BEA96C-F7A6-4ACA-A57E-577DE6AAA59F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -191,6 +211,10 @@ Global
 		{812461DE-152F-4FC7-BD99-14049F1A136D} = {DFF1F27B-88C1-4D57-81B8-D7C414BE0733}
 		{2F170A20-5F29-4D26-9C39-F64C01D5A061} = {09AF9CCE-AE03-44CE-BC28-BE64814DAED6}
 		{F6F5195A-A152-41B3-BC78-10C10771A130} = {09AF9CCE-AE03-44CE-BC28-BE64814DAED6}
+		{6E12B798-17B2-480A-BEC2-AA2A5D9DD63E} = {9D82A31E-441E-4E55-A4F9-DB7516D4E3AC}
+		{177D4259-C1D0-422E-B4CF-C709D451F122} = {9D82A31E-441E-4E55-A4F9-DB7516D4E3AC}
+		{E1D3AACC-8286-434C-B404-C4E544B9535D} = {A97676D5-09E5-4ABC-8BE3-6514B10C19BF}
+		{19BEA96C-F7A6-4ACA-A57E-577DE6AAA59F} = {E1D3AACC-8286-434C-B404-C4E544B9535D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60CA8CD7-A4B2-4BC2-A785-31E8A26B575A}

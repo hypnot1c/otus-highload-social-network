@@ -116,7 +116,6 @@ namespace OTUS.HA.SN.Web.Api.V1.Controllers
     [ProducesResponseType(typeof(ForbiddenResultError), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(NotFoundResultError), StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    [ProducesDefaultResponseType]
     public async Task<IActionResult> UpdatePost(PostUpdateInputModel im, CancellationToken cancellationToken)
     {
       var command = this._mapper.Map<PostUpdateCommand>(im);
@@ -153,10 +152,10 @@ namespace OTUS.HA.SN.Web.Api.V1.Controllers
     /// <response code="200">Успешное обновление</response>
     [HttpPut("delete/{id}")]
     [ProducesResponseType(typeof(PostDeleteOutputModel), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ForbiddenResultError), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(NotFoundResultError), StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    [ProducesDefaultResponseType]
     public async Task<IActionResult> DeletePost(string id, CancellationToken cancellationToken)
     {
       var isValidPostId = Guid.TryParse(id, out var postId);
@@ -184,6 +183,33 @@ namespace OTUS.HA.SN.Web.Api.V1.Controllers
       if (commandResult.Error is ForbiddenResultError _)
       {
         return Forbid();
+      }
+
+      return StatusCode(StatusCodes.Status500InternalServerError);
+    }
+
+    /// <summary>
+    /// Лента постов друзей
+    /// </summary>
+    /// <param name="im"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    /// <response code="200">Успешное обновление</response>
+    [HttpGet("feed")]
+    [ProducesResponseType(typeof(PostDeleteOutputModel), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetFeed([FromQuery] PostFeedGetInputModel im, CancellationToken cancellationToken)
+    {
+      var command = this._mapper.Map<PostFeedGetQuery>(im);
+      command.UserId = this.UserId;
+
+      var queryResult = await this.Mediator.Send(command, cancellationToken);
+
+      if (queryResult.Status == StatusEnum.Ok)
+      {
+        var result = this._mapper.Map<PostFeedGetOutputModel>(queryResult);
+        return Ok(result);
       }
 
       return StatusCode(StatusCodes.Status500InternalServerError);

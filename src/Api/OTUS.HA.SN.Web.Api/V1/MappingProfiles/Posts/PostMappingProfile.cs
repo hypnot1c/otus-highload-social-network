@@ -32,6 +32,13 @@ namespace OTUS.HA.SN.Web.Api.V1.MappingProfiles
         .ForMember(d => d.Id, opt => opt.MapFrom(s => Guid.Parse(s.Id)))
         .ForMember(d => d.UpdaterId, opt => opt.Ignore())
         ;
+
+      CreateMap<PostFeedGetInputModel, PostFeedGetQuery>()
+        .ForMember(d => d.UserId, opt => opt.Ignore())
+        ;
+
+      CreateMap<PostFeedGetQueryResult, PostFeedGetOutputModel>()
+        ;
     }
   }
 }

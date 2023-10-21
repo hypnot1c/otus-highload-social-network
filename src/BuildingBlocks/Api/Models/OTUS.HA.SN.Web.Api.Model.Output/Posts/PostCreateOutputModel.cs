@@ -3,11 +3,11 @@ namespace OTUS.HA.SN.Web.Api.Model.Output
   /// <summary>
   /// 
   /// </summary>
-  public class FriendDeleteOutputModel
+  public class PostCreateOutputModel
   {
     /// <summary>
     /// 
     /// </summary>
-    public string Description { get; set; }
+    public string PostId { get; set; }
   }
 }

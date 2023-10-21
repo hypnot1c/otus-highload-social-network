@@ -32,6 +32,8 @@ namespace OTUS.HA.SN.Web.Api.V1.Controllers
     [HttpPut("set/{friendId}")]
     [ProducesResponseType(typeof(FriendAddOutputModel), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesDefaultResponseType]
     public async Task<IActionResult> AddFriend(string friendId, CancellationToken cancellationToken)
     {
       var friendTwoId = Guid.Empty;

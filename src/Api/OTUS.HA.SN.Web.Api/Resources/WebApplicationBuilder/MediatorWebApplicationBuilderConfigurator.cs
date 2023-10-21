@@ -8,6 +8,7 @@ internal class MediatorWebApplicationBuilderConfigurator : IWebApplicationBuilde
     {
       cfg.RegisterServicesFromAssembly(typeof(OTUS.HA.SN.BusinessLogic.Users.AssemblyMarker).Assembly);
       cfg.RegisterServicesFromAssembly(typeof(OTUS.HA.SN.BusinessLogic.Friends.AssemblyMarker).Assembly);
+      cfg.RegisterServicesFromAssembly(typeof(OTUS.HA.SN.BusinessLogic.Posts.AssemblyMarker).Assembly);
     });
 
     return builder;

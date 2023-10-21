@@ -194,6 +194,119 @@
 									"response": []
 								}
 							]
+						},
+						{
+							"name": "Posts",
+							"item": [
+								{
+									"name": "Create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"text\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non ex et ligula laoreet egestas at ut turpis. Nulla id lorem ac augue tempus dignissim. Vestibulum purus magna, semper sed pellentesque ut, faucibus sed eros. Suspendisse potenti. Etiam aliquet vitae velit in bibendum. Nullam lacinia aliquam diam, quis tincidunt libero vestibulum id. Sed quis odio auctor, tincidunt augue a, euismod libero. Aenean sed auctor quam. Maecenas vehicula sapien sed neque gravida, nec suscipit purus hendrerit. Mauris porttitor libero sit amet arcu semper, a viverra tortor placerat. Sed vitae tincidunt nibh. Praesent dolor nulla, semper non mauris non, luctus condimentum nunc. Nulla facilisi. Integer auctor lacus eget pretium gravida.\\r\\n Praesent nec ante cursus dui vulputate mollis. Duis mattis, velit sed mattis hendrerit, velit ex cursus nunc, id molestie eros orci at mauris. Nam fermentum vel neque at faucibus. Duis et tellus arcu. Ut tempor justo in metus vestibulum dignissim at eget lacus. Etiam venenatis sapien ut nisl semper elementum. Praesent euismod velit non nunc sagittis, eu bibendum erat aliquet. Donec efficitur eros viverra est placerat, eu fermentum augue ullamcorper. Suspendisse in sodales ipsum. Sed eu lorem sit amet nulla vehicula varius id sed ex. Fusce dapibus, lectus sit amet scelerisque venenatis, felis risus sollicitudin dui, ac viverra sapien ipsum id dolor. Curabitur ut nisl eget felis dignissim mattis sit amet non sem. Fusce auctor, arcu ac laoreet fermentum, lacus diam dictum justo, ac luctus erat justo eget tortor. \"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{OTUS.HS.SN.Web.Api}}/v1/posts/create",
+											"host": [
+												"{{OTUS.HS.SN.Web.Api}}"
+											],
+											"path": [
+												"v1",
+												"posts",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get by id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{OTUS.HS.SN.Web.Api}}/v1/posts/get/:id",
+											"host": [
+												"{{OTUS.HS.SN.Web.Api}}"
+											],
+											"path": [
+												"v1",
+												"posts",
+												"get",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "c75b7c38-18f9-4dba-bbb3-e94aff5a41f9"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": \"c75b7c38-18f9-4dba-bbb3-e94aff5a41f9\",\r\n    \"text\": \"123213432423\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{OTUS.HS.SN.Web.Api}}/v1/posts/update",
+											"host": [
+												"{{OTUS.HS.SN.Web.Api}}"
+											],
+											"path": [
+												"v1",
+												"posts",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{OTUS.HS.SN.Web.Api}}/v1/posts/delete/:id",
+											"host": [
+												"{{OTUS.HS.SN.Web.Api}}"
+											],
+											"path": [
+												"v1",
+												"posts",
+												"delete",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "c75b7c38-18f9-4dba-bbb3-e94aff5a41f9"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
 						}
 					],
 					"auth": {
@@ -201,7 +314,7 @@
 						"bearer": [
 							{
 								"key": "token",
-								"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsInN1YiI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsIm5hbWUiOiJFdGhlbCBOaWVub3ciLCJqdGkiOiI3MWNhYTUzNy05N2ZlLTQzYzYtOGE1Yy05ZmZjZmNmNzBhYWUiLCJuYmYiOjE2OTc1NzE4NDEsImV4cCI6MTY5NzU3MjE0MSwiaWF0IjoxNjk3NTcxODQxLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNjEiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUyNjEifQ.LfhQYQNRcamU41BhIgzLVyyrx85_e9u1AhV0qaoONAYiDkNgTOu9LPl-MO6aiJ-2CMdbemnlh_lQukLXmev7Fw",
+								"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsInN1YiI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsIm5hbWUiOiJFdGhlbCBOaWVub3ciLCJqdGkiOiJmMGI1OWRlZC00NDIzLTRhYWUtOGVkOS04NWEzYTJlZDliMDkiLCJuYmYiOjE2OTc4OTM3NjIsImV4cCI6MTY5Nzg5NDA2MiwiaWF0IjoxNjk3ODkzNzYyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNjEiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUyNjEifQ.DfiQgyuKvGAijaaWwWaJcXyjXQrWunW2Sojoky-y83TK1v5vXhVn7syNYpPnxoGtYEkiHLUlf9GWAZAaMHNbEw",
 								"type": "string"
 							}
 						]

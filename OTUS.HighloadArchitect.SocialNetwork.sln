@@ -82,7 +82,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{DFF1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HS.SN.DB.Data", "src\Apps\Helpers\OTUS.HS.SN.DB.Data\OTUS.HS.SN.DB.Data.csproj", "{812461DE-152F-4FC7-BD99-14049F1A136D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.BusinessLogic.Friends", "src\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Friends\OTUS.HA.SN.BusinessLogic.Friends.csproj", "{2F170A20-5F29-4D26-9C39-F64C01D5A061}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.BusinessLogic.Friends", "src\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Friends\OTUS.HA.SN.BusinessLogic.Friends.csproj", "{2F170A20-5F29-4D26-9C39-F64C01D5A061}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.BusinessLogic.Posts", "src\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Posts\OTUS.HA.SN.BusinessLogic.Posts.csproj", "{F6F5195A-A152-41B3-BC78-10C10771A130}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -150,6 +152,10 @@ Global
 		{2F170A20-5F29-4D26-9C39-F64C01D5A061}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F170A20-5F29-4D26-9C39-F64C01D5A061}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F170A20-5F29-4D26-9C39-F64C01D5A061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6F5195A-A152-41B3-BC78-10C10771A130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6F5195A-A152-41B3-BC78-10C10771A130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6F5195A-A152-41B3-BC78-10C10771A130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6F5195A-A152-41B3-BC78-10C10771A130}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -184,6 +190,7 @@ Global
 		{DFF1F27B-88C1-4D57-81B8-D7C414BE0733} = {05714CED-3435-4C5B-8569-950E5D3FDF57}
 		{812461DE-152F-4FC7-BD99-14049F1A136D} = {DFF1F27B-88C1-4D57-81B8-D7C414BE0733}
 		{2F170A20-5F29-4D26-9C39-F64C01D5A061} = {09AF9CCE-AE03-44CE-BC28-BE64814DAED6}
+		{F6F5195A-A152-41B3-BC78-10C10771A130} = {09AF9CCE-AE03-44CE-BC28-BE64814DAED6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60CA8CD7-A4B2-4BC2-A785-31E8A26B575A}

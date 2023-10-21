@@ -8,7 +8,9 @@ internal class AutoMapperWebApplicationBuilderConfigurator : IWebApplicationBuil
     {
       cfg.AddMaps(
         typeof(Program),
-        typeof(OTUS.HA.SN.BusinessLogic.Users.AssemblyMarker)
+        typeof(OTUS.HA.SN.BusinessLogic.Users.AssemblyMarker),
+        typeof(OTUS.HA.SN.BusinessLogic.Friends.AssemblyMarker),
+        typeof(OTUS.HA.SN.BusinessLogic.Posts.AssemblyMarker)
         );
     });
 

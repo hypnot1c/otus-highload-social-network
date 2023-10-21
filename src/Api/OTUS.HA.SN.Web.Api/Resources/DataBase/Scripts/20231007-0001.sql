@@ -8,3 +8,5 @@ CREATE TABLE "User" (
   "City"          varchar(100),
   "PasswordHash"  varchar(300)
 );
+
+CREATE UNIQUE INDEX UIX_User_PublicId ON "User" ("PublicId");

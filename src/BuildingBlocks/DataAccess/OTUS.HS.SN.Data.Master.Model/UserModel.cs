@@ -9,6 +9,7 @@ namespace OTUS.HS.SN.Data.Master.Model
     {
       this.FriendOnes = new HashSet<FriendsModel>();
       this.FriendTwos = new HashSet<FriendsModel>();
+      this.Posts = new HashSet<PostModel>();
     }
     public Guid PublicId { get; set; }
     public string Firstname { get; set; }
@@ -20,5 +21,6 @@ namespace OTUS.HS.SN.Data.Master.Model
 
     public ICollection<FriendsModel> FriendOnes { get; set; }
     public ICollection<FriendsModel> FriendTwos { get; set; }
+    public ICollection<PostModel> Posts { get; set; }
   }
 }

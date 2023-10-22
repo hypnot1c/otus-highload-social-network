@@ -40,6 +40,8 @@ namespace OTUS.HA.SN.Web.Api.Resources.DataBase
         {
           this._logger.LogError(ex, "Error check for DB");
         }
+
+        tryInteraval += currentTry * 1000;
       }
       while (currentTry <= tries);
 

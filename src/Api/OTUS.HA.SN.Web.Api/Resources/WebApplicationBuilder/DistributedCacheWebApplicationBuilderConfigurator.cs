@@ -1,19 +1,28 @@
-using Microsoft.EntityFrameworkCore;
-using OTUS.HS.SN.Data.Master.Context;
+using OTUS.HS.SN.Data.DataService;
 
 namespace OTUS.HA.SN.Web.Api.Resources;
 
-internal class DbContextWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator
+internal class DistributedCacheWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator
 {
   public WebApplicationBuilder AddServices(WebApplicationBuilder builder, IConfiguration config)
   {
-    builder.Services.AddDbContext<MasterContext>(options => options
-      .UseNpgsql(builder.Configuration.GetConnectionString("MasterContext"))
-    );
-    builder.Services.AddDbContext<Slave1Context>(options => options
-      .UseNpgsql(builder.Configuration.GetConnectionString("Slave1Context"))
-    );
-    //builder.Services.AddDbContext<MasterContext>(options => options.UseInMemoryDatabase("Master"));
+    builder.Services.AddScoped<IDataService, OTUS.HS.SN.Data.DataService.DataService>();
+
+    if (builder.Environment.IsStaging())
+    {
+      builder.Services.AddStackExchangeRedisCache(opts =>
+      {
+        opts.Configuration = builder.Configuration.GetConnectionString("Redis");
+        opts.InstanceName = "WEB_API";
+      });
+      return builder;
+    }
+
+    if (builder.Environment.IsDevelopment())
+    {
+      builder.Services.AddDistributedMemoryCache();
+      return builder;
+    }
 
     return builder;
   }

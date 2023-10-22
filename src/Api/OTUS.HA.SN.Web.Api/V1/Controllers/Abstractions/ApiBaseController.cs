@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,5 +34,20 @@ namespace OTUS.HA.SN.Web.Api.V1.Controllers
     /// 
     /// </summary>
     public ILogger<ApiBaseController> Logger { get; }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    protected Guid UserId
+    {
+      get
+      {
+        var claimValue = this.User.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+        if (claimValue == null)
+          return Guid.Empty;
+
+        return Guid.Parse(claimValue);
+      }
+    }
   }
 }

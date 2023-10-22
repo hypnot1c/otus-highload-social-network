@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_").Replace(".DistributedCache", ""))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\Caching\MS.Extensions.Caching.Distributed.Extensions\MS.Extensions.Caching.Distributed.Extensions.csproj" />
+    <ProjectReference Include="..\OTUS.HS.SN.Data.DataService.Abstractions\OTUS.HS.SN.Data.DataService.Abstractions.csproj" />
+    <ProjectReference Include="..\OTUS.HS.SN.Data.Master.Context\OTUS.HS.SN.Data.Master.Context.csproj" />
+  </ItemGroup>
+
+</Project>

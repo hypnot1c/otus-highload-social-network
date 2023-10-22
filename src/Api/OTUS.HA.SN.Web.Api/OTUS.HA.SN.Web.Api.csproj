@@ -16,12 +16,16 @@
     <None Remove="Resources\DataBase\Scripts\20231007-0001.sql" />
     <None Remove="Resources\DataBase\Scripts\20231007-0002.sql" />
     <None Remove="Resources\DataBase\Scripts\20231007-0003.sql" />
+    <None Remove="Resources\DataBase\Scripts\20231007-0004.sql" />
+    <None Remove="Resources\DataBase\Scripts\20231021-0001.sql" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\DataBase\Scripts\20231007-0001.sql" />
     <EmbeddedResource Include="Resources\DataBase\Scripts\20231007-0002.sql" />
     <EmbeddedResource Include="Resources\DataBase\Scripts\20231007-0003.sql" />
+    <EmbeddedResource Include="Resources\DataBase\Scripts\20231007-0004.sql" />
+    <EmbeddedResource Include="Resources\DataBase\Scripts\20231021-0001.sql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +33,7 @@
     <PackageReference Include="dbup-postgresql" />
     <PackageReference Include="FluentValidation.AspNetCore" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
@@ -40,7 +45,11 @@
     <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Model.Input.Validation\OTUS.HA.SN.Web.Api.Model.Input.Validation.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Model.Input\OTUS.HA.SN.Web.Api.Model.Input.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Model.Output\OTUS.HA.SN.Web.Api.Model.Output.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Friends\OTUS.HA.SN.BusinessLogic.Friends.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Posts\OTUS.HA.SN.BusinessLogic.Posts.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Users\OTUS.HA.SN.BusinessLogic.Users.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Collections\System.Collections.Generic.BackgroundTaskQueue\System.Collections.Generic.BackgroundTaskQueue.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.DataService.DistributedCache\OTUS.HS.SN.Data.DataService.DistributedCache.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Extensions\AspNetCore\Microsoft.AspNetCode.Mvc.Filters\Microsoft.AspNetCode.Mvc.Filters.csproj" />
   </ItemGroup>
 

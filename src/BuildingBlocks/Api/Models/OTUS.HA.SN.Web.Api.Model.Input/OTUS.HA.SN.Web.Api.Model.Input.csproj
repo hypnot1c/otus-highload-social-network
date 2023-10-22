@@ -10,4 +10,8 @@
     <PackageReference Include="System.Text.Json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Friends\" />
+  </ItemGroup>
+
 </Project>

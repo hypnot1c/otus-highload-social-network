@@ -18,12 +18,12 @@
       docker stop postgres_db_slave_2
 6. Перенести содержимое каталога PG_MASTER_DATA_PATH/pgslave в PG_SLAVE_1_DATA_PATH и PG_SLAVE_2_DATA_PATH
 7. Заменить строку primary_conninfo в postgresql.auto.conf на slave1
-    > primary_conninfo = 'user=replication_user host=postgres_db_master port=5432 application_name=walreceiver password=PASSWORD channel_binding=prefer sslmode=prefer sslcompression=0 sslsni=1 ssl_min_protocol_version=TLSv1.2 gssencmode=prefer krbsrvname=postgres target_session_attrs=any'
-8. Заменить строку primary_conninfo в postgresql.auto.conf на slave2
     > primary_conninfo = 'user=replication_user host=postgres_db_master port=5432 application_name=walreceiversync password=PASSWORD channel_binding=prefer sslmode=prefer sslcompression=0 sslsni=1 ssl_min_protocol_version=TLSv1.2 gssencmode=prefer krbsrvname=postgres target_session_attrs=any'
+8. Заменить строку primary_conninfo в postgresql.auto.conf на slave2
+    > primary_conninfo = 'user=replication_user host=postgres_db_master port=5432 application_name=walreceiver password=PASSWORD channel_binding=prefer sslmode=prefer sslcompression=0 sslsni=1 ssl_min_protocol_version=TLSv1.2 gssencmode=prefer krbsrvname=postgres target_session_attrs=any'
 9. Выполнить команды:
-    > docker start postgres_db_slave_2
-      docker start postgres_db_slave_1
+    > docker start postgres_db_slave_1
+      docker start postgres_db_slave_2
 
 
 
@@ -34,4 +34,4 @@
 3. Выполнить HTTP запрос Users/Register из коллекции
 4. Полученный user_id и указанный при запросе пароль указать в качестве параметров тела в запросе Login/Login
 5. Полученный token указать в качестве Bearer token авторизации (настроена на уровне папки Social network)
-6. Теперь можно выполнять запросы Users/Get by id
+6. Теперь можно выполнять запросы к Api

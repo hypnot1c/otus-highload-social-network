@@ -40,6 +40,8 @@ namespace OTUS.HA.SN.Web.Api.Resources.DataBase
         {
           this._logger.LogError(ex, "Error check for DB");
         }
+
+        tryInteraval += currentTry * 1000;
       }
       while (currentTry <= tries);
 
@@ -49,6 +51,7 @@ namespace OTUS.HA.SN.Web.Api.Resources.DataBase
         .PostgresqlDatabase(connectionString)
         .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
         .WithTransaction()
+        .WithExecutionTimeout(TimeSpan.FromSeconds(180))
         .LogToConsole()
         .Build()
         ;

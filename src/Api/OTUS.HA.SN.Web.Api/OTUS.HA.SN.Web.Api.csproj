@@ -47,6 +47,7 @@
     <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Friends\OTUS.HA.SN.BusinessLogic.Friends.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Posts\OTUS.HA.SN.BusinessLogic.Posts.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Users\OTUS.HA.SN.BusinessLogic.Users.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Collections\System.Collections.Generic.BackgroundTaskQueue\System.Collections.Generic.BackgroundTaskQueue.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.DataService.DistributedCache\OTUS.HS.SN.Data.DataService.DistributedCache.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Extensions\AspNetCore\Microsoft.AspNetCode.Mvc.Filters\Microsoft.AspNetCode.Mvc.Filters.csproj" />
   </ItemGroup>

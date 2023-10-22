@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Collections\System.Collections.Generic.BackgroundTaskQueue\System.Collections.Generic.BackgroundTaskQueue.csproj" />
     <ProjectReference Include="..\..\DataAccess\OTUS.HS.SN.Data.DataService.Abstractions\OTUS.HS.SN.Data.DataService.Abstractions.csproj" />
     <ProjectReference Include="..\..\DataAccess\OTUS.HS.SN.Data.Master.Context\OTUS.HS.SN.Data.Master.Context.csproj" />
     <ProjectReference Include="..\OTUS.HA.SN.BusinessLogic.Abstractions\OTUS.HA.SN.BusinessLogic.Abstractions.csproj" />

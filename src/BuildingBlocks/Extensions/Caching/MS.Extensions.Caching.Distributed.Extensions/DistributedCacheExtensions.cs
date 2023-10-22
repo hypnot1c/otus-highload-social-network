@@ -16,6 +16,9 @@ namespace Microsoft.Extensions.Caching.Distributed
         return JsonSerializer.Deserialize<T>(entry);
       }
 
+      if (source is null)
+        return default(T);
+
       var opts = new DistributedCacheEntryOptions();
       var data = await source(opts, cancellationToken);
 

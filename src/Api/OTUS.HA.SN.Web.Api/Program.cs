@@ -3,6 +3,8 @@ using Microsoft.OpenApi.Models;
 using OTUS.HA.SN.Auth.Jwt;
 using OTUS.HA.SN.Web.Api.Resources;
 using OTUS.HA.SN.Web.Api.Resources.DataBase;
+using OTUS.HA.SN.Web.Api.Resources.HostedServices;
+using OTUS.HA.SN.Web.Api.V1;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +27,12 @@ typeof(Program)
 builder.Services.AddTransient<DataBaseMigrator>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 
+builder.Services.AddSingleton(typeof(IBackgroundTaskQueue<>), typeof(BackgroundTaskQueue<>));
+builder.Services.AddScoped<IBackgroundTaskHandler<PostCreatedBackgroundTask>, PostCreatedBackgroundTaskHandler>();
+builder.Services.AddScoped<IBackgroundTaskHandler<CacheWarmUpBackgroundTask>, CacheWarmUpBackgroundTaskHandler>();
+
+builder.Services.AddHostedService<QueuedHostedService<IBackgroundTask>>();
+
 var app = builder.Build();
 
 var mapper = app.Services.GetRequiredService<IMapper>();
@@ -34,8 +42,11 @@ using (var scope = app.Services.CreateScope())
 {
   var migrator = scope.ServiceProvider.GetService<DataBaseMigrator>();
   await migrator.MigrateDatabase();
-}
 
+  var cachewarmupTask = new CacheWarmUpBackgroundTask();
+  var backgroundQueue = scope.ServiceProvider.GetService<IBackgroundTaskQueue<IBackgroundTask>>();
+  await backgroundQueue.Enqueue(cachewarmupTask, app.Lifetime.ApplicationStopping);
+}
 
 app.UseRouting();
 app.UseStaticFiles();

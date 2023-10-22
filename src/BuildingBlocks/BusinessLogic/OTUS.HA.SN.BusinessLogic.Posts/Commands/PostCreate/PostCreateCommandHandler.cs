@@ -14,12 +14,16 @@ namespace OTUS.HA.SN.BusinessLogic
   public class PostCreateCommandHandler : BaseCommandHandler, IRequestHandler<PostCreateCommand, PostCreateCommandResult>
   {
     public PostCreateCommandHandler(
+      IMediator mediator,
       IMapper mapper,
       MasterContext masterContext,
       ILogger<PostCreateCommandHandler> logger
       ) : base(mapper, masterContext, logger)
     {
+      Mediator = mediator;
     }
+
+    private IMediator Mediator { get; }
 
     public async Task<PostCreateCommandResult> Handle(PostCreateCommand request, CancellationToken cancellationToken)
     {
@@ -50,6 +54,10 @@ namespace OTUS.HA.SN.BusinessLogic
         result = new PostCreateCommandResult(new UnexpectedResultError(ex));
         return result;
       }
+
+      var notif = this.Mapper.Map<PostCreatedNotification>(postModel);
+
+      await this.Mediator.Publish(notif, cancellationToken);
 
       result = this.Mapper.Map<PostCreateCommandResult>(postModel);
       result.Status = StatusEnum.Ok;

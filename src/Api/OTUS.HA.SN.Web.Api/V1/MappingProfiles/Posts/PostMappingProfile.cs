@@ -39,6 +39,10 @@ namespace OTUS.HA.SN.Web.Api.V1.MappingProfiles
 
       CreateMap<PostFeedGetQueryResult, PostFeedGetOutputModel>()
         ;
+
+      CreateMap<PostCreatedNotification, PostCreatedBackgroundTask>()
+        .ForMember(d => d.Id, opt => opt.MapFrom(s => s.PostId))
+        ;
     }
   }
 }

@@ -86,13 +86,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.BusinessLogic.Fr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.BusinessLogic.Posts", "src\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Posts\OTUS.HA.SN.BusinessLogic.Posts.csproj", "{F6F5195A-A152-41B3-BC78-10C10771A130}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HS.SN.Data.DataService.Abstractions", "src\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.DataService.Abstractions\OTUS.HS.SN.Data.DataService.Abstractions.csproj", "{6E12B798-17B2-480A-BEC2-AA2A5D9DD63E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HS.SN.Data.DataService.Abstractions", "src\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.DataService.Abstractions\OTUS.HS.SN.Data.DataService.Abstractions.csproj", "{6E12B798-17B2-480A-BEC2-AA2A5D9DD63E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HS.SN.Data.DataService.DistributedCache", "src\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.DataService.DistributedCache\OTUS.HS.SN.Data.DataService.DistributedCache.csproj", "{177D4259-C1D0-422E-B4CF-C709D451F122}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HS.SN.Data.DataService.DistributedCache", "src\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.DataService.DistributedCache\OTUS.HS.SN.Data.DataService.DistributedCache.csproj", "{177D4259-C1D0-422E-B4CF-C709D451F122}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Caching", "Caching", "{E1D3AACC-8286-434C-B404-C4E544B9535D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.Extensions.Caching.Distributed.Extensions", "src\BuildingBlocks\Extensions\Caching\MS.Extensions.Caching.Distributed.Extensions\MS.Extensions.Caching.Distributed.Extensions.csproj", "{19BEA96C-F7A6-4ACA-A57E-577DE6AAA59F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MS.Extensions.Caching.Distributed.Extensions", "src\BuildingBlocks\Extensions\Caching\MS.Extensions.Caching.Distributed.Extensions\MS.Extensions.Caching.Distributed.Extensions.csproj", "{19BEA96C-F7A6-4ACA-A57E-577DE6AAA59F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Collections", "Collections", "{755FCC88-E34F-47CA-8BC6-018004D774F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Collections.Generic.BackgroundTaskQueue", "src\BuildingBlocks\Collections\System.Collections.Generic.BackgroundTaskQueue\System.Collections.Generic.BackgroundTaskQueue.csproj", "{48D30F0C-3EEE-4DCB-AFEB-1155BD1DC1A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -176,6 +180,10 @@ Global
 		{19BEA96C-F7A6-4ACA-A57E-577DE6AAA59F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19BEA96C-F7A6-4ACA-A57E-577DE6AAA59F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19BEA96C-F7A6-4ACA-A57E-577DE6AAA59F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48D30F0C-3EEE-4DCB-AFEB-1155BD1DC1A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48D30F0C-3EEE-4DCB-AFEB-1155BD1DC1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48D30F0C-3EEE-4DCB-AFEB-1155BD1DC1A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48D30F0C-3EEE-4DCB-AFEB-1155BD1DC1A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -215,6 +223,8 @@ Global
 		{177D4259-C1D0-422E-B4CF-C709D451F122} = {9D82A31E-441E-4E55-A4F9-DB7516D4E3AC}
 		{E1D3AACC-8286-434C-B404-C4E544B9535D} = {A97676D5-09E5-4ABC-8BE3-6514B10C19BF}
 		{19BEA96C-F7A6-4ACA-A57E-577DE6AAA59F} = {E1D3AACC-8286-434C-B404-C4E544B9535D}
+		{755FCC88-E34F-47CA-8BC6-018004D774F3} = {B716F4B4-681B-4C2E-B8DE-9C88811DE55E}
+		{48D30F0C-3EEE-4DCB-AFEB-1155BD1DC1A5} = {755FCC88-E34F-47CA-8BC6-018004D774F3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60CA8CD7-A4B2-4BC2-A785-31E8A26B575A}

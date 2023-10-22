@@ -253,6 +253,32 @@
 									"response": []
 								},
 								{
+									"name": "Feed Get",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{OTUS.HS.SN.Web.Api}}/v1/posts/get/:id",
+											"host": [
+												"{{OTUS.HS.SN.Web.Api}}"
+											],
+											"path": [
+												"v1",
+												"posts",
+												"get",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "c75b7c38-18f9-4dba-bbb3-e94aff5a41f9"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "Update",
 									"request": {
 										"method": "PUT",
@@ -314,7 +340,7 @@
 						"bearer": [
 							{
 								"key": "token",
-								"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsInN1YiI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsIm5hbWUiOiJFdGhlbCBOaWVub3ciLCJqdGkiOiJmMGI1OWRlZC00NDIzLTRhYWUtOGVkOS04NWEzYTJlZDliMDkiLCJuYmYiOjE2OTc4OTM3NjIsImV4cCI6MTY5Nzg5NDA2MiwiaWF0IjoxNjk3ODkzNzYyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNjEiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUyNjEifQ.DfiQgyuKvGAijaaWwWaJcXyjXQrWunW2Sojoky-y83TK1v5vXhVn7syNYpPnxoGtYEkiHLUlf9GWAZAaMHNbEw",
+								"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsInN1YiI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsIm5hbWUiOiJFdGhlbCBOaWVub3ciLCJqdGkiOiJjZGI4ZDBiOC04NTZlLTQ5OWEtODUyYi00NWU1YzU4ODE4MGIiLCJuYmYiOjE2OTc5ODk5NzgsImV4cCI6MTY5Nzk5MDI3OCwiaWF0IjoxNjk3OTg5OTc4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNjEiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUyNjEifQ.2n03vY_t_S6KFtL4PC6pAtiIF5qZb5VdQwklYUDKUCeK84DtbXnhbMrSmwibsOklgcBZ_hCQW15kqcuPaPwJGw",
 								"type": "string"
 							}
 						]

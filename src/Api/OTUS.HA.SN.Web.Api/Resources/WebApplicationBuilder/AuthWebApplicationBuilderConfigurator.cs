@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using OTUS.HA.SN.Auth.Jwt;
 
 namespace OTUS.HA.SN.Web.Api.Resources;
 
@@ -8,6 +9,8 @@ internal class AuthWebApplicationBuilderConfigurator : IWebApplicationBuilderCon
 {
   public WebApplicationBuilder AddServices(WebApplicationBuilder builder, IConfiguration config)
   {
+    builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+
     builder.Services.AddAuthentication(options =>
     {
       options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

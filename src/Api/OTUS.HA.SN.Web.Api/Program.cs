@@ -1,9 +1,7 @@
 using AutoMapper;
 using Microsoft.OpenApi.Models;
-using OTUS.HA.SN.Auth.Jwt;
 using OTUS.HA.SN.Web.Api.Resources;
 using OTUS.HA.SN.Web.Api.Resources.DataBase;
-using OTUS.HA.SN.Web.Api.Resources.HostedServices;
 using OTUS.HA.SN.Web.Api.V1;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
@@ -25,13 +23,6 @@ typeof(Program)
 ;
 
 builder.Services.AddTransient<DataBaseMigrator>();
-builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
-
-builder.Services.AddSingleton(typeof(IBackgroundTaskQueue<>), typeof(BackgroundTaskQueue<>));
-builder.Services.AddScoped<IBackgroundTaskHandler<PostCreatedBackgroundTask>, PostCreatedBackgroundTaskHandler>();
-builder.Services.AddScoped<IBackgroundTaskHandler<CacheWarmUpBackgroundTask>, CacheWarmUpBackgroundTaskHandler>();
-
-builder.Services.AddHostedService<QueuedHostedService<IBackgroundTask>>();
 
 var app = builder.Build();
 

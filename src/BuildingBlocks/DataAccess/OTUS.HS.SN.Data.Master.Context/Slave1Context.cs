@@ -19,5 +19,6 @@ namespace OTUS.HS.SN.Data.Master.Context
     public DbSet<UserModel> Users { get; set; }
     public DbSet<FriendsModel> Friends { get; set; }
     public DbSet<PostModel> Posts { get; set; }
+    public DbSet<UserDialogModel> UserDialogs { get; set; }
   }
 }

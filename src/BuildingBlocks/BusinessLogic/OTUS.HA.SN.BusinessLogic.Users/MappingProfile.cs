@@ -15,6 +15,8 @@ namespace OTUS.HA.SN.BusinessLogic
         .ForMember(d => d.FriendOnes, opt => opt.Ignore())
         .ForMember(d => d.FriendTwos, opt => opt.Ignore())
         .ForMember(d => d.Posts, opt => opt.Ignore())
+        .ForMember(d => d.FromDialogs, opt => opt.Ignore())
+        .ForMember(d => d.ToDialogs, opt => opt.Ignore())
         ;
 
       CreateMap<UserModel, UserRegistationCommandResult>()

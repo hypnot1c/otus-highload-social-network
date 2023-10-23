@@ -40,7 +40,6 @@ namespace OTUS.HA.SN.Web.Api.V1.Controllers
     [ProducesResponseType(typeof(PostCreateOutputModel), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(NotFoundResultError), StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    [ProducesDefaultResponseType]
     public async Task<IActionResult> CreatePost(PostCreateInputModel im, CancellationToken cancellationToken)
     {
       var command = this._mapper.Map<PostCreateCommand>(im);

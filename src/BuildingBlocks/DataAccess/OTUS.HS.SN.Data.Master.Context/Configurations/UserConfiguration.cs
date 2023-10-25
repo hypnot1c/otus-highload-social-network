@@ -10,6 +10,8 @@ namespace OTUS.HS.SN.Data.Master.Context
     {
       builder.ToTable("User");
 
+      builder.HasKey(p => p.Id);
+
       builder.HasMany(p => p.FriendOnes).WithOne(u => u.FriendOne).HasForeignKey(p => p.FriendOneId);
       builder.HasMany(p => p.FriendTwos).WithOne(u => u.FriendTwo).HasForeignKey(p => p.FriendTwoId);
     }

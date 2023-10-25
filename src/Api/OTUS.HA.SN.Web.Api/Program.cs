@@ -1,7 +1,6 @@
 using AutoMapper;
 using Microsoft.OpenApi.Models;
 using OTUS.HA.SN.Web.Api.Resources;
-using OTUS.HA.SN.Web.Api.Resources.DataBase;
 using OTUS.HA.SN.Web.Api.V1;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
@@ -22,7 +21,8 @@ typeof(Program)
   .ForEach(t => t.GetType().GetMethod("AddServices").Invoke(t, new object[] { builder, builder.Configuration }))
 ;
 
-builder.Services.AddTransient<DataBaseMigrator>();
+builder.Services.AddTransient<MasterDataBaseMigrator>();
+builder.Services.AddTransient<DialogDataBaseMigrator>();
 
 var app = builder.Build();
 
@@ -31,8 +31,11 @@ mapper.ConfigurationProvider.AssertConfigurationIsValid();
 
 using (var scope = app.Services.CreateScope())
 {
-  var migrator = scope.ServiceProvider.GetService<DataBaseMigrator>();
+  var migrator = scope.ServiceProvider.GetService<MasterDataBaseMigrator>();
   await migrator.MigrateDatabase();
+
+  var dialogMigrator = scope.ServiceProvider.GetService<DialogDataBaseMigrator>();
+  await dialogMigrator.MigrateDatabase();
 
   var cachewarmupTask = new CacheWarmUpBackgroundTask();
   var backgroundQueue = scope.ServiceProvider.GetService<IBackgroundTaskQueue<IBackgroundTask>>();

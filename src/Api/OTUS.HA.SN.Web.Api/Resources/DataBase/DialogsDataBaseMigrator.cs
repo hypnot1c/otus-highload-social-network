@@ -1,21 +1,21 @@
-using System.Reflection;
 using DbUp;
+using OTUS.HA.SN.Data.Dialog.Context;
 
-namespace OTUS.HA.SN.Web.Api.Resources.DataBase
+namespace OTUS.HA.SN.Web.Api.Resources
 {
-  internal class DataBaseMigrator
+  internal class DialogDataBaseMigrator
   {
-    public DataBaseMigrator(
-      ILogger<DataBaseMigrator> logger,
+    public DialogDataBaseMigrator(
+      ILogger<DialogDataBaseMigrator> logger,
       IConfiguration configuration
       )
     {
-      connectionString = configuration.GetConnectionString("MigrationContext");
+      connectionString = configuration.GetConnectionString("DialogMigrationContext");
       this._logger = logger;
     }
 
     private readonly string connectionString;
-    private readonly ILogger<DataBaseMigrator> _logger;
+    private readonly ILogger<DialogDataBaseMigrator> _logger;
 
     public async ValueTask MigrateDatabase()
     {
@@ -49,7 +49,7 @@ namespace OTUS.HA.SN.Web.Api.Resources.DataBase
       var upgrader =
         DeployChanges.To
         .PostgresqlDatabase(connectionString)
-        .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
+        .WithScriptsEmbeddedInAssembly(typeof(DialogContext).Assembly)
         .WithTransaction()
         .WithExecutionTimeout(TimeSpan.FromSeconds(180))
         .LogToConsole()

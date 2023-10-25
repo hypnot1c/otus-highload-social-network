@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using OTUS.HS.SN.Data.Master.Model;
+using OTUS.HA.SN.Data.Dialog.Model;
 
-namespace OTUS.HS.SN.Data.Master.Context
+namespace OTUS.HA.SN.Data.Dialog.Context
 {
   public class UserDialogConfiguration : IEntityTypeConfiguration<UserDialogModel>
   {
@@ -14,9 +14,6 @@ namespace OTUS.HS.SN.Data.Master.Context
 
       builder.Property(p => p.FromUserId).HasColumnName("From_UserId");
       builder.Property(p => p.ToUserId).HasColumnName("To_UserId");
-
-      builder.HasOne(p => p.FromUser).WithMany(u => u.FromDialogs).HasForeignKey(p => p.FromUserId);
-      builder.HasOne(p => p.ToUser).WithMany(u => u.ToDialogs).HasForeignKey(p => p.ToUserId);
     }
   }
 }

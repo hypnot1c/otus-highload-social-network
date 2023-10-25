@@ -7,6 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DataBase\Scripts\20231007-0001.sql" />
+    <None Remove="DataBase\Scripts\20231007-0002.sql" />
+    <None Remove="DataBase\Scripts\20231007-0003.sql" />
+    <None Remove="DataBase\Scripts\20231007-0004.sql" />
+    <None Remove="DataBase\Scripts\20231021-0001.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="DataBase\Scripts\20231007-0001.sql" />
+    <EmbeddedResource Include="DataBase\Scripts\20231007-0002.sql" />
+    <EmbeddedResource Include="DataBase\Scripts\20231007-0003.sql" />
+    <EmbeddedResource Include="DataBase\Scripts\20231007-0004.sql" />
+    <EmbeddedResource Include="DataBase\Scripts\20231021-0001.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
   </ItemGroup>

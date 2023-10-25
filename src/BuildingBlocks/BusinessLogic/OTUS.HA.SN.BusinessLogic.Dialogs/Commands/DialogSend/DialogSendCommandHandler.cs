@@ -6,20 +6,25 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using OTUS.HA.SN.Data.Dialog.Context;
+using OTUS.HA.SN.Data.Dialog.Model;
 using OTUS.HS.SN.Data.Master.Context;
-using OTUS.HS.SN.Data.Master.Model;
 
 namespace OTUS.HA.SN.BusinessLogic
 {
   public class DialogSendCommandHandler : BaseCommandHandler, IRequestHandler<DialogSendCommand, DialogSendCommandResult>
   {
     public DialogSendCommandHandler(
+      DialogContext dialogContext,
       IMapper mapper,
       MasterContext masterContext,
       ILogger<DialogSendCommandHandler> logger
       ) : base(mapper, masterContext, logger)
     {
+      DialogContext = dialogContext;
     }
+
+    protected DialogContext DialogContext { get; }
 
     public async Task<DialogSendCommandResult> Handle(DialogSendCommand request, CancellationToken cancellationToken)
     {
@@ -46,11 +51,11 @@ namespace OTUS.HA.SN.BusinessLogic
       dialogModel.FromUserId = fromUserId.Value;
       dialogModel.ToUserId = toUserId.Value;
 
-      this.MasterContext.UserDialogs.Add(dialogModel);
+      this.DialogContext.UserDialogs.Add(dialogModel);
 
       try
       {
-        await this.MasterContext.SaveChangesAsync(cancellationToken);
+        await this.DialogContext.SaveChangesAsync(cancellationToken);
       }
       catch (Exception ex)
       {

@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OTUS.HA.SN.BusinessLogic.Abstractions\OTUS.HA.SN.BusinessLogic.Abstractions.csproj" />
+    <ProjectReference Include="..\OTUS.HA.SN.BusinessLogic.Users\OTUS.HA.SN.BusinessLogic.Users.csproj" />
   </ItemGroup>
 
 </Project>

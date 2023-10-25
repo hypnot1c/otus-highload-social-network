@@ -6,6 +6,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using OTUS.HA.SN.Data.Dialog.Context;
 using OTUS.HS.SN.Data.Master.Context;
 
 namespace OTUS.HA.SN.BusinessLogic
@@ -13,7 +14,7 @@ namespace OTUS.HA.SN.BusinessLogic
   public class DialogGetQueryHandler : BaseQueryHandler, IRequestHandler<DialogGetQuery, DialogGetQueryResult>
   {
     public DialogGetQueryHandler(
-      Slave1Context slave1Context,
+      DialogContext dialogContext,
       IMapper mapper,
       MasterContext masterContext,
       ILogger<DialogGetQueryHandler> logger
@@ -23,29 +24,48 @@ namespace OTUS.HA.SN.BusinessLogic
         logger
         )
     {
-      this._slave1Context = slave1Context;
+      this.DialogContext = dialogContext;
     }
 
-    private Slave1Context _slave1Context;
+    protected DialogContext DialogContext { get; }
 
     public async Task<DialogGetQueryResult> Handle(DialogGetQuery request, CancellationToken cancellationToken)
     {
       var result = new DialogGetQueryResult();
       try
       {
+        int? fromUserId = await this.MasterContext.Users
+          .Where(u => u.PublicId == request.FromUserId)
+          .Select(u => u.Id)
+          .SingleOrDefaultAsync(cancellationToken)
+          ;
+
+        int? toUserId = await this.MasterContext.Users
+          .Where(u => u.PublicId == request.ToUserId)
+          .Select(u => u.Id)
+          .SingleOrDefaultAsync(cancellationToken)
+          ;
+
         result.Items = await this.Mapper.ProjectTo<DialogMessageGetQueryResult>(
-          this._slave1Context.UserDialogs
-            .Where(d => d.FromUser.PublicId == request.FromUserId)
-            .Where(d => d.ToUser.PublicId == request.ToUserId)
+          this.DialogContext.UserDialogs
+            .Where(d => d.FromUserId == fromUserId)
+            .Where(d => d.ToUserId == toUserId)
           )
           .ToListAsync(cancellationToken)
           ;
+
+        foreach (var i in result.Items)
+        {
+          i.From = request.FromUserId;
+          i.To = request.ToUserId;
+        }
 
         result.Status = StatusEnum.Ok;
         return result;
       }
       catch (Exception ex)
       {
+        this.Logger.LogError(ex, "Error getting dialog list");
         result = new DialogGetQueryResult(new UnexpectedResultError(ex));
         return result;
       }

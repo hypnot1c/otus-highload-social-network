@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DataAccess\OTUS.HA.SN.Data.DialogContext\OTUS.HA.SN.Data.DialogContext.csproj" />
     <ProjectReference Include="..\..\DataAccess\OTUS.HS.SN.Data.Master.Context\OTUS.HS.SN.Data.Master.Context.csproj" />
   </ItemGroup>
 

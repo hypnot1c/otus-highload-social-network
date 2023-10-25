@@ -13,24 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\DataBase\Scripts\20231007-0001.sql" />
-    <None Remove="Resources\DataBase\Scripts\20231007-0002.sql" />
-    <None Remove="Resources\DataBase\Scripts\20231007-0003.sql" />
-    <None Remove="Resources\DataBase\Scripts\20231007-0004.sql" />
-    <None Remove="Resources\DataBase\Scripts\20231021-0001.sql" />
-    <None Remove="Resources\DataBase\Scripts\20231023-0001.sql" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\DataBase\Scripts\20231007-0001.sql" />
-    <EmbeddedResource Include="Resources\DataBase\Scripts\20231007-0002.sql" />
-    <EmbeddedResource Include="Resources\DataBase\Scripts\20231007-0003.sql" />
-    <EmbeddedResource Include="Resources\DataBase\Scripts\20231007-0004.sql" />
-    <EmbeddedResource Include="Resources\DataBase\Scripts\20231023-0001.sql" />
-    <EmbeddedResource Include="Resources\DataBase\Scripts\20231021-0001.sql" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <PackageReference Include="dbup-postgresql" />
     <PackageReference Include="FluentValidation.AspNetCore" />

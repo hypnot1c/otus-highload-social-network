@@ -49,10 +49,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Master", "Master", "{5308D3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{E04100F5-10EA-47F2-8A04-6A7B6B5A804D}"
 	ProjectSection(SolutionItems) = preProject
-		deploy\init.sh = deploy\init.sh
-		deploy\init_slave.sh = deploy\init_slave.sh
-		deploy\pg_hba.conf = deploy\pg_hba.conf
-		deploy\postgresql.conf = deploy\postgresql.conf
 		deploy\user_data.copy = deploy\user_data.copy
 	EndProjectSection
 EndProject
@@ -98,7 +94,32 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Collections", "Collections"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Collections.Generic.BackgroundTaskQueue", "src\BuildingBlocks\Collections\System.Collections.Generic.BackgroundTaskQueue\System.Collections.Generic.BackgroundTaskQueue.csproj", "{48D30F0C-3EEE-4DCB-AFEB-1155BD1DC1A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.BusinessLogic.Dialogs", "src\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Dialogs\OTUS.HA.SN.BusinessLogic.Dialogs.csproj", "{098B62EC-FBAB-463A-9BA2-4AF41B8256C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.BusinessLogic.Dialogs", "src\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Dialogs\OTUS.HA.SN.BusinessLogic.Dialogs.csproj", "{098B62EC-FBAB-463A-9BA2-4AF41B8256C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "psql", "psql", "{D3A9586D-6DE3-462D-AF6E-C40C2492CB45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "master", "master", "{A8136513-DC7B-4AD0-80AB-EFD7A6935C7E}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\psql\master\init.sh = deploy\psql\master\init.sh
+		deploy\psql\master\pg_hba.conf = deploy\psql\master\pg_hba.conf
+		deploy\psql\master\postgresql.conf = deploy\psql\master\postgresql.conf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "slave", "slave", "{491267C3-C13C-48D8-A105-DC42AE2437D5}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\psql\slave\init_slave.sh = deploy\psql\slave\init_slave.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "citus", "citus", "{E776142D-00F5-41A6-94AE-1107B418C3CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "master", "master", "{98F91EA4-1DB8-4E40-9C87-14CD8561EB5D}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\citus\master\init.sh = deploy\citus\master\init.sh
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Data.DialogContext", "src\BuildingBlocks\DataAccess\OTUS.HA.SN.Data.DialogContext\OTUS.HA.SN.Data.DialogContext.csproj", "{E60AF72A-925A-4D61-BF5C-089459CF43C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Data.Dialog.Model", "src\BuildingBlocks\DataAccess\OTUS.HA.SN.Data.Dialog.Model\OTUS.HA.SN.Data.Dialog.Model.csproj", "{7E410E59-D493-4B5B-9ECD-4AEE7EB141A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -190,6 +211,14 @@ Global
 		{098B62EC-FBAB-463A-9BA2-4AF41B8256C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{098B62EC-FBAB-463A-9BA2-4AF41B8256C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{098B62EC-FBAB-463A-9BA2-4AF41B8256C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E60AF72A-925A-4D61-BF5C-089459CF43C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E60AF72A-925A-4D61-BF5C-089459CF43C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E60AF72A-925A-4D61-BF5C-089459CF43C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E60AF72A-925A-4D61-BF5C-089459CF43C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E410E59-D493-4B5B-9ECD-4AEE7EB141A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E410E59-D493-4B5B-9ECD-4AEE7EB141A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E410E59-D493-4B5B-9ECD-4AEE7EB141A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E410E59-D493-4B5B-9ECD-4AEE7EB141A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -232,6 +261,13 @@ Global
 		{755FCC88-E34F-47CA-8BC6-018004D774F3} = {B716F4B4-681B-4C2E-B8DE-9C88811DE55E}
 		{48D30F0C-3EEE-4DCB-AFEB-1155BD1DC1A5} = {755FCC88-E34F-47CA-8BC6-018004D774F3}
 		{098B62EC-FBAB-463A-9BA2-4AF41B8256C7} = {09AF9CCE-AE03-44CE-BC28-BE64814DAED6}
+		{D3A9586D-6DE3-462D-AF6E-C40C2492CB45} = {E04100F5-10EA-47F2-8A04-6A7B6B5A804D}
+		{A8136513-DC7B-4AD0-80AB-EFD7A6935C7E} = {D3A9586D-6DE3-462D-AF6E-C40C2492CB45}
+		{491267C3-C13C-48D8-A105-DC42AE2437D5} = {D3A9586D-6DE3-462D-AF6E-C40C2492CB45}
+		{E776142D-00F5-41A6-94AE-1107B418C3CF} = {D3A9586D-6DE3-462D-AF6E-C40C2492CB45}
+		{98F91EA4-1DB8-4E40-9C87-14CD8561EB5D} = {E776142D-00F5-41A6-94AE-1107B418C3CF}
+		{E60AF72A-925A-4D61-BF5C-089459CF43C4} = {9D82A31E-441E-4E55-A4F9-DB7516D4E3AC}
+		{7E410E59-D493-4B5B-9ECD-4AEE7EB141A4} = {9D82A31E-441E-4E55-A4F9-DB7516D4E3AC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60CA8CD7-A4B2-4BC2-A785-31E8A26B575A}

@@ -1,5 +1,6 @@
 using AutoMapper;
 using OTUS.HA.SN.BusinessLogic;
+using OTUS.HA.SN.Kafka.Message;
 using OTUS.HA.SN.Web.Api.Model.Input;
 using OTUS.HA.SN.Web.Api.Model.Output;
 
@@ -42,6 +43,9 @@ namespace OTUS.HA.SN.Web.Api.V1.MappingProfiles
 
       CreateMap<PostCreatedNotification, PostCreatedBackgroundTask>()
         .ForMember(d => d.Id, opt => opt.MapFrom(s => s.PostId))
+        ;
+
+      CreateMap<PostCreatedNotification, PostCreatedKafkaMessage>()
         ;
     }
   }

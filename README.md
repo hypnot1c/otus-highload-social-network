@@ -31,7 +31,13 @@ docker start postgres_db_slave_1
 docker start postgres_db_slave_2
 ```
 
-
+### WebSocket сервер
+После запуска всех контейнеров, WS сервер доступен по адресу
+```
+ws://localhost:5081
+```
+Сервер реализован с помощью библиотеки [Asp.NetCore.SignalR](https://learn.microsoft.com/en-us/aspnet/core/signalr/introduction?view=aspnetcore-7.0)
+Для горизонтального масштабирования используется синхронизация клиентских подключений через Redis.
 
 ### Postman
 

@@ -1,8 +1,6 @@
-using MediatR;
-
-namespace OTUS.HA.SN.BusinessLogic
+namespace OTUS.HA.SN.Kafka.Message
 {
-  public class PostCreatedNotification : INotification
+  public class PostCreatedKafkaMessage
   {
     public int PostId { get; set; }
     public int AuthorId { get; set; }

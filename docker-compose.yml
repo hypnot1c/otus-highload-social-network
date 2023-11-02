@@ -16,6 +16,21 @@ services:
     build:
       context: .
       dockerfile: ./src/Api/OTUS.HA.SN.Web.Api/Dockerfile
+  otus.ha.sn.web.asyncapi:
+    image: ${DOCKER_REGISTRY-}otushasnwebasyncapi
+    container_name: web_asyncapi_application
+    hostname: web_asyncapi
+    networks:
+      - social_network_common
+    depends_on: 
+      - db-master
+      - db-slave-1
+      - otus.ha.sn.web.api
+    ports:
+      - "5081:80"
+    build:
+      context: .
+      dockerfile: ./src/Api/OTUS.HA.SN.Web.AsyncApi/Dockerfile
   db-master:
     image: postgres:15.4
     shm_size: 1gb
@@ -77,6 +92,8 @@ services:
     container_name: "citus_db_master"
     hostname: citus_db_master
     image: "citusdata/citus:postgres_15"
+    networks:
+      - social_network_common
     ports: ["${COORDINATOR_EXTERNAL_PORT:-35432}:5432"]
     labels: ["com.citusdata.role=Master"]
     environment: &AUTH
@@ -94,17 +111,52 @@ services:
     depends_on: [citus_manager]
     environment: *AUTH
     command: "/wait-for-manager.sh"
+    networks:
+      - social_network_common
     volumes:
       - healthcheck-volume:/healthcheck
   citus_manager:
     container_name: "citus_db_manager"
     image: "citusdata/membership-manager:0.3.0"
+    networks:
+      - social_network_common
     volumes:
       - "${DOCKER_SOCK:-/var/run/docker.sock}:/var/run/docker.sock"
       - healthcheck-volume:/healthcheck
     depends_on: [citus_master]
     environment: &AUTH
       CITUS_HOST: citus_db_master
+  kafka:
+    container_name: "kafka"
+    hostname: kafka
+    image: bitnami/kafka:3.6.0
+    ports:
+      - "9094:9094"
+    networks:
+      - social_network_common
+    environment:
+      # KRaft settings
+      - KAFKA_CFG_NODE_ID=0
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
+      # Listeners
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092,EXTERNAL://localhost:9094
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_CFG_LOG_RETENTION_MINUTES=5
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+  rabbit:
+    container_name: "rabbit"
+    hostname: rabbit
+    image: masstransit/rabbitmq:3.12.7
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - social_network_common
+
 volumes:
   healthcheck-volume:
 networks:

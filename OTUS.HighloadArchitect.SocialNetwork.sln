@@ -117,9 +117,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "master", "master", "{98F91E
 		deploy\citus\master\init.sh = deploy\citus\master\init.sh
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Data.DialogContext", "src\BuildingBlocks\DataAccess\OTUS.HA.SN.Data.DialogContext\OTUS.HA.SN.Data.DialogContext.csproj", "{E60AF72A-925A-4D61-BF5C-089459CF43C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Data.DialogContext", "src\BuildingBlocks\DataAccess\OTUS.HA.SN.Data.DialogContext\OTUS.HA.SN.Data.DialogContext.csproj", "{E60AF72A-925A-4D61-BF5C-089459CF43C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Data.Dialog.Model", "src\BuildingBlocks\DataAccess\OTUS.HA.SN.Data.Dialog.Model\OTUS.HA.SN.Data.Dialog.Model.csproj", "{7E410E59-D493-4B5B-9ECD-4AEE7EB141A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Data.Dialog.Model", "src\BuildingBlocks\DataAccess\OTUS.HA.SN.Data.Dialog.Model\OTUS.HA.SN.Data.Dialog.Model.csproj", "{7E410E59-D493-4B5B-9ECD-4AEE7EB141A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Kafka.Message", "src\BuildingBlocks\EventBus\OTUS.HA.SN.Kafka.Message\OTUS.HA.SN.Kafka.Message.csproj", "{A2A8CBBC-3E6C-4DF8-A010-D1F19BD9AA8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Web.AsyncApi", "src\Api\OTUS.HA.SN.Web.AsyncApi\OTUS.HA.SN.Web.AsyncApi.csproj", "{D7EC3314-AA40-4FD0-A0A4-8A3B935DF34B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -219,6 +223,14 @@ Global
 		{7E410E59-D493-4B5B-9ECD-4AEE7EB141A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E410E59-D493-4B5B-9ECD-4AEE7EB141A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E410E59-D493-4B5B-9ECD-4AEE7EB141A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2A8CBBC-3E6C-4DF8-A010-D1F19BD9AA8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A8CBBC-3E6C-4DF8-A010-D1F19BD9AA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A8CBBC-3E6C-4DF8-A010-D1F19BD9AA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A8CBBC-3E6C-4DF8-A010-D1F19BD9AA8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7EC3314-AA40-4FD0-A0A4-8A3B935DF34B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7EC3314-AA40-4FD0-A0A4-8A3B935DF34B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7EC3314-AA40-4FD0-A0A4-8A3B935DF34B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7EC3314-AA40-4FD0-A0A4-8A3B935DF34B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -268,6 +280,8 @@ Global
 		{98F91EA4-1DB8-4E40-9C87-14CD8561EB5D} = {E776142D-00F5-41A6-94AE-1107B418C3CF}
 		{E60AF72A-925A-4D61-BF5C-089459CF43C4} = {9D82A31E-441E-4E55-A4F9-DB7516D4E3AC}
 		{7E410E59-D493-4B5B-9ECD-4AEE7EB141A4} = {9D82A31E-441E-4E55-A4F9-DB7516D4E3AC}
+		{A2A8CBBC-3E6C-4DF8-A010-D1F19BD9AA8C} = {09AF9CCE-AE03-44CE-BC28-BE64814DAED6}
+		{D7EC3314-AA40-4FD0-A0A4-8A3B935DF34B} = {9FFDDAFC-EB3C-4E1D-9CF3-97CBC73FF6A0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60CA8CD7-A4B2-4BC2-A785-31E8A26B575A}

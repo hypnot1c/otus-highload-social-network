@@ -2,8 +2,6 @@ version: '3.9'
 
 services:
   otus.ha.sn.web.api:
-    profiles:
-      - donotstart
     image: ${DOCKER_REGISTRY-}otushasnwebapi
     container_name: web_api_application
     hostname: web_api
@@ -18,6 +16,21 @@ services:
     build:
       context: .
       dockerfile: ./src/Api/OTUS.HA.SN.Web.Api/Dockerfile
+  otus.ha.sn.web.api.dialogs:
+    image: ${DOCKER_REGISTRY-}otushasnwebapidialogs
+    container_name: web_api_dialogs_application
+    hostname: web_api_dialogs
+    networks:
+      - social_network_common
+    depends_on: 
+      - db-master
+      - db-slave-1
+      - otus.ha.sn.web.api
+    ports:
+      - "5082:80"
+    build:
+      context: .
+      dockerfile: ./src/Api/OTUS.HA.SN.Web.Api.Dialogs/Dockerfile
   otus.ha.sn.web.asyncapi:
     profiles:
       - donotstart

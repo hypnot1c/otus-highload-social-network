@@ -9,9 +9,7 @@ internal class MediatorWebApplicationBuilderConfigurator : IWebApplicationBuilde
     builder.Services.AddMediatR(cfg =>
     {
       cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-      cfg.RegisterServicesFromAssembly(typeof(OTUS.HA.SN.BusinessLogic.Users.AssemblyMarker).Assembly);
-      cfg.RegisterServicesFromAssembly(typeof(OTUS.HA.SN.BusinessLogic.Friends.AssemblyMarker).Assembly);
-      cfg.RegisterServicesFromAssembly(typeof(OTUS.HA.SN.BusinessLogic.Posts.AssemblyMarker).Assembly);
+      cfg.RegisterServicesFromAssembly(typeof(OTUS.HA.SN.BusinessLogic.Dialogs.AssemblyMarker).Assembly);
     });
 
     return builder;

@@ -38,7 +38,7 @@ namespace OTUS.HA.SN.Web.Api.V1.Controllers
     /// <returns></returns>
     /// <response code="200">Успешное создание</response>
     [HttpPost("{userId}/send")]
-    [ProducesResponseType(typeof(PostCreateOutputModel), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(DialogSendOutputModel), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(NotFoundResultError), StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]

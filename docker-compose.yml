@@ -1,7 +1,9 @@
-version: '3.4'
+version: '3.9'
 
 services:
   otus.ha.sn.web.api:
+    profiles:
+      - donotstart
     image: ${DOCKER_REGISTRY-}otushasnwebapi
     container_name: web_api_application
     hostname: web_api
@@ -17,6 +19,8 @@ services:
       context: .
       dockerfile: ./src/Api/OTUS.HA.SN.Web.Api/Dockerfile
   otus.ha.sn.web.asyncapi:
+    profiles:
+      - donotstart
     image: ${DOCKER_REGISTRY-}otushasnwebasyncapi
     container_name: web_asyncapi_application
     hostname: web_asyncapi
@@ -156,7 +160,19 @@ services:
       - "15672:15672"
     networks:
       - social_network_common
-
+  jmeter-gui:
+    container_name: "jmeter-gui"
+    hostname: jmeter-gui
+    image: guitarrapc/jmeter-gui:5.3
+    tty: true
+    volumes:
+      - ./test/plan/:/root/jmeter/
+      - ./deploy/user_data.copy:/root/jmeter/user_data.copy
+    ports:
+      - 5900:5900
+      - 3390:3389
+    networks:
+      - social_network_common
 volumes:
   healthcheck-volume:
 networks:

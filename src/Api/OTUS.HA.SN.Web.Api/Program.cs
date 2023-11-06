@@ -34,8 +34,8 @@ using (var scope = app.Services.CreateScope())
   var migrator = scope.ServiceProvider.GetService<MasterDataBaseMigrator>();
   await migrator.MigrateDatabase();
 
-  //var dialogMigrator = scope.ServiceProvider.GetService<DialogDataBaseMigrator>();
-  //await dialogMigrator.MigrateDatabase();
+  var dialogMigrator = scope.ServiceProvider.GetService<DialogDataBaseMigrator>();
+  await dialogMigrator.MigrateDatabase();
 
   var cachewarmupTask = new CacheWarmUpBackgroundTask();
   var backgroundQueue = scope.ServiceProvider.GetService<IBackgroundTaskQueue<IBackgroundTask>>();

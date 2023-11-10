@@ -173,6 +173,21 @@ services:
       - "15672:15672"
     networks:
       - social_network_common
+  tarantool:
+    container_name: "tarantool_db_master"
+    hostname: tarantool_db_master
+    image: tarantool/tarantool:2.10.8
+    command: tarantool /usr/local/share/tarantool/init.lua
+    ports:
+      - "3301:3301"
+    networks:
+      - social_network_common
+    environment:
+      - TARANTOOL_USER_NAME=web_api
+      - TARANTOOL_USER_PASSWORD=password
+    volumes:
+     - ${TARANTOOL_MASTER_DATA_PATH}:/opt/tarantool/
+     - ./deploy/tarantool/master/:/usr/local/share/tarantool/
   jmeter-gui:
     container_name: "jmeter-gui"
     hostname: jmeter-gui

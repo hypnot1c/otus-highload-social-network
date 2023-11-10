@@ -29,7 +29,6 @@
     <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Dialogs.Model.Input\OTUS.HA.SN.Web.Api.Dialogs.Model.Input.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Dialogs.Model.Output\OTUS.HA.SN.Web.Api.Dialogs.Model.Output.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Dialogs\OTUS.HA.SN.BusinessLogic.Dialogs.csproj" />
-    <ProjectReference Include="..\..\BuildingBlocks\DataAccess\OTUS.HA.SN.Data.DialogContext\OTUS.HA.SN.Data.DialogContext.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Extensions\AspNetCore\Microsoft.AspNetCode.Mvc.Filters\Microsoft.AspNetCode.Mvc.Filters.csproj" />
   </ItemGroup>
 </Project>

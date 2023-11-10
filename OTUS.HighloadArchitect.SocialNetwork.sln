@@ -125,13 +125,22 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Kafka.Message", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Web.AsyncApi", "src\Api\OTUS.HA.SN.Web.AsyncApi\OTUS.HA.SN.Web.AsyncApi.csproj", "{D7EC3314-AA40-4FD0-A0A4-8A3B935DF34B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Web.Api.Dialogs", "src\Api\OTUS.HA.SN.Web.Api.Dialogs\OTUS.HA.SN.Web.Api.Dialogs.csproj", "{FD13559E-CCBB-4D3A-9912-911F8DB27215}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Web.Api.Dialogs", "src\Api\OTUS.HA.SN.Web.Api.Dialogs\OTUS.HA.SN.Web.Api.Dialogs.csproj", "{FD13559E-CCBB-4D3A-9912-911F8DB27215}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Web.Api.Dialogs.Model.Output", "src\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Dialogs.Model.Output\OTUS.HA.SN.Web.Api.Dialogs.Model.Output.csproj", "{C2E06620-AB0A-47AC-A3E0-380CBEF9C288}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Web.Api.Dialogs.Model.Output", "src\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Dialogs.Model.Output\OTUS.HA.SN.Web.Api.Dialogs.Model.Output.csproj", "{C2E06620-AB0A-47AC-A3E0-380CBEF9C288}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Web.Api.Dialogs.Model.Input", "src\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Dialogs.Model.Input\OTUS.HA.SN.Web.Api.Dialogs.Model.Input.csproj", "{8851F41B-4DCE-4D03-ADBA-2681FFDBABD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Web.Api.Dialogs.Model.Input", "src\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Dialogs.Model.Input\OTUS.HA.SN.Web.Api.Dialogs.Model.Input.csproj", "{8851F41B-4DCE-4D03-ADBA-2681FFDBABD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Web.Api.Dialogs.Model.Input.Validation", "src\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Dialogs.Model.Input.Validation\OTUS.HA.SN.Web.Api.Dialogs.Model.Input.Validation.csproj", "{B11372CF-BB42-48A9-ADBE-E60305E37033}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Web.Api.Dialogs.Model.Input.Validation", "src\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Dialogs.Model.Input.Validation\OTUS.HA.SN.Web.Api.Dialogs.Model.Input.Validation.csproj", "{B11372CF-BB42-48A9-ADBE-E60305E37033}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tarantool", "tarantool", "{36112461-CBEA-410F-8787-917B26038312}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "master", "master", "{6922985D-C49F-430E-9F26-35E74D8779B7}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\tarantool\master\init.lua = deploy\tarantool\master\init.lua
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Data.Dialog.TarantoolModel", "src\BuildingBlocks\DataAccess\OTUS.HA.SN.Data.Dialog.TarantoolModel\OTUS.HA.SN.Data.Dialog.TarantoolModel.csproj", "{BD773151-4EC5-43AF-94EE-143D48970C1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -255,6 +264,10 @@ Global
 		{B11372CF-BB42-48A9-ADBE-E60305E37033}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B11372CF-BB42-48A9-ADBE-E60305E37033}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B11372CF-BB42-48A9-ADBE-E60305E37033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD773151-4EC5-43AF-94EE-143D48970C1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD773151-4EC5-43AF-94EE-143D48970C1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD773151-4EC5-43AF-94EE-143D48970C1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD773151-4EC5-43AF-94EE-143D48970C1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -310,6 +323,9 @@ Global
 		{C2E06620-AB0A-47AC-A3E0-380CBEF9C288} = {227F191E-57DF-45EB-AB1A-25FC9598C57C}
 		{8851F41B-4DCE-4D03-ADBA-2681FFDBABD7} = {227F191E-57DF-45EB-AB1A-25FC9598C57C}
 		{B11372CF-BB42-48A9-ADBE-E60305E37033} = {227F191E-57DF-45EB-AB1A-25FC9598C57C}
+		{36112461-CBEA-410F-8787-917B26038312} = {E04100F5-10EA-47F2-8A04-6A7B6B5A804D}
+		{6922985D-C49F-430E-9F26-35E74D8779B7} = {36112461-CBEA-410F-8787-917B26038312}
+		{BD773151-4EC5-43AF-94EE-143D48970C1E} = {9D82A31E-441E-4E55-A4F9-DB7516D4E3AC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60CA8CD7-A4B2-4BC2-A785-31E8A26B575A}

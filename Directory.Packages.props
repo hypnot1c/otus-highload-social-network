@@ -46,5 +46,8 @@
 
     <PackageVersion Include="MassTransit.Kafka" Version="8.1.1" />
     <PackageVersion Include="MassTransit.RabbitMQ" Version="8.1.1" />
+
+    <PackageVersion Include="progaudi.tarantool" Version="0.15.0" />
+    <PackageVersion Include="msgpack.light" Version="2.0.0" />
   </ItemGroup>
 </Project>

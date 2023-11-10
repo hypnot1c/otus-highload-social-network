@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using OTUS.HA.SN.Data.Dialog.Context;
 using OTUS.HS.SN.Data.Master.Context;
 
 namespace OTUS.HA.SN.Web.Api.Resources;
@@ -14,9 +13,9 @@ internal class DbContextWebApplicationBuilderConfigurator : IWebApplicationBuild
     builder.Services.AddDbContext<Slave1Context>(options => options
       .UseNpgsql(builder.Configuration.GetConnectionString("Slave1Context"))
     );
-    builder.Services.AddDbContext<DialogContext>(options => options
-      .UseNpgsql(builder.Configuration.GetConnectionString("DialogContext"))
-    );
+    //builder.Services.AddDbContext<DialogContext>(options => options
+    //  .UseNpgsql(builder.Configuration.GetConnectionString("DialogContext"))
+    //);
     //builder.Services.AddDbContext<MasterContext>(options => options.UseInMemoryDatabase("Master"));
 
     return builder;

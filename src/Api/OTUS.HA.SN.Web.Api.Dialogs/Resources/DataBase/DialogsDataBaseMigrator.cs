@@ -1,6 +1,3 @@
-using DbUp;
-using OTUS.HA.SN.Data.Dialog.Context;
-
 namespace OTUS.HA.SN.Web.Api.Resources
 {
   internal class DialogDataBaseMigrator
@@ -19,49 +16,49 @@ namespace OTUS.HA.SN.Web.Api.Resources
 
     public async ValueTask MigrateDatabase()
     {
-      var tries = 5;
-      var currentTry = 0;
-      var tryInteraval = 2000;
+      //var tries = 5;
+      //var currentTry = 0;
+      //var tryInteraval = 2000;
 
-      do
-      {
-        if (currentTry != 1)
-        {
-          await Task.Delay(tryInteraval);
-        }
+      //do
+      //{
+      //  if (currentTry != 1)
+      //  {
+      //    await Task.Delay(tryInteraval);
+      //  }
 
-        currentTry++;
+      //  currentTry++;
 
-        try
-        {
-          EnsureDatabase.For.PostgresqlDatabase(connectionString);
-        }
-        catch (Exception ex)
-        {
-          this._logger.LogError(ex, "Error check for DB");
-        }
+      //  try
+      //  {
+      //    EnsureDatabase.For.PostgresqlDatabase(connectionString);
+      //  }
+      //  catch (Exception ex)
+      //  {
+      //    this._logger.LogError(ex, "Error check for DB");
+      //  }
 
-        tryInteraval += currentTry * 1000;
-      }
-      while (currentTry <= tries);
+      //  tryInteraval += currentTry * 1000;
+      //}
+      //while (currentTry <= tries);
 
 
-      var upgrader =
-        DeployChanges.To
-        .PostgresqlDatabase(connectionString)
-        .WithScriptsEmbeddedInAssembly(typeof(DialogContext).Assembly)
-        .WithTransaction()
-        .WithExecutionTimeout(TimeSpan.FromSeconds(180))
-        .LogToConsole()
-        .Build()
-        ;
+      //var upgrader =
+      //  DeployChanges.To
+      //  .PostgresqlDatabase(connectionString)
+      //  .WithScriptsEmbeddedInAssembly(typeof(DialogContext).Assembly)
+      //  .WithTransaction()
+      //  .WithExecutionTimeout(TimeSpan.FromSeconds(180))
+      //  .LogToConsole()
+      //  .Build()
+      //  ;
 
-      var result = upgrader.PerformUpgrade();
+      //var result = upgrader.PerformUpgrade();
 
-      if (!result.Successful)
-      {
-        throw new Exception("Failed to upgrade database", result.Error);
-      }
+      //if (!result.Successful)
+      //{
+      //  throw new Exception("Failed to upgrade database", result.Error);
+      //}
 
 
 

@@ -26,12 +26,6 @@ var app = builder.Build();
 var mapper = app.Services.GetRequiredService<IMapper>();
 mapper.ConfigurationProvider.AssertConfigurationIsValid();
 
-using (var scope = app.Services.CreateScope())
-{
-  var dialogMigrator = scope.ServiceProvider.GetRequiredService<DialogDataBaseMigrator>();
-  await dialogMigrator.MigrateDatabase();
-}
-
 app.UseRouting();
 app.UseStaticFiles();
 app.MapControllers();

@@ -6,15 +6,18 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using OTUS.HA.SN.Data.Dialog.Context;
+using OTUS.HA.SN.Data.Dialog.TarantoolModel;
 using OTUS.HS.SN.Data.Master.Context;
+using ProGaudi.Tarantool.Client;
+using ProGaudi.Tarantool.Client.Model;
+using ProGaudi.Tarantool.Client.Model.Enums;
 
 namespace OTUS.HA.SN.BusinessLogic
 {
   public class DialogGetQueryHandler : BaseQueryHandler, IRequestHandler<DialogGetQuery, DialogGetQueryResult>
   {
     public DialogGetQueryHandler(
-      DialogContext dialogContext,
+      Box tarantoolBox,
       IMapper mapper,
       MasterContext masterContext,
       ILogger<DialogGetQueryHandler> logger
@@ -24,10 +27,10 @@ namespace OTUS.HA.SN.BusinessLogic
         logger
         )
     {
-      this.DialogContext = dialogContext;
+      TarantoolBox = tarantoolBox;
     }
 
-    protected DialogContext DialogContext { get; }
+    protected Box TarantoolBox { get; }
 
     public async Task<DialogGetQueryResult> Handle(DialogGetQuery request, CancellationToken cancellationToken)
     {
@@ -46,13 +49,15 @@ namespace OTUS.HA.SN.BusinessLogic
           .SingleOrDefaultAsync(cancellationToken)
           ;
 
-        result.Items = await this.Mapper.ProjectTo<DialogMessageGetQueryResult>(
-          this.DialogContext.UserDialogs
-            .Where(d => d.FromUserId == fromUserId)
-            .Where(d => d.ToUserId == toUserId)
-          )
-          .ToListAsync(cancellationToken)
-          ;
+        var schema = this.TarantoolBox.GetSchema();
+
+        var space = schema["user_dialog"];
+
+        var secondaryIndex = space["secondary"];
+
+        var res = await secondaryIndex.Select<TarantoolTuple<int, int>, UserDialogModel>(TarantoolTuple.Create(fromUserId.Value, toUserId.Value), new SelectOptions { Iterator = Iterator.All });
+
+        result.Items = this.Mapper.Map<DialogMessageGetQueryResult[]>(res.Data);
 
         foreach (var i in result.Items)
         {

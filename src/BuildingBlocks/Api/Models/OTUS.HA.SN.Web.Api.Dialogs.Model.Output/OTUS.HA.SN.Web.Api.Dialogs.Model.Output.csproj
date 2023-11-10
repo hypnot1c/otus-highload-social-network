@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_").Replace(".Dialogs", ""))</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.Text.Json" />
+	</ItemGroup>
+
+</Project>

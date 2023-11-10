@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\OTUS.HA.SN.Web.Api.Dialogs.Model.Input\OTUS.HA.SN.Web.Api.Dialogs.Model.Input.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.9'
 
 services:
   otus.ha.sn.web.api:
@@ -16,6 +16,21 @@ services:
     build:
       context: .
       dockerfile: ./src/Api/OTUS.HA.SN.Web.Api/Dockerfile
+  otus.ha.sn.web.api.dialogs:
+    image: ${DOCKER_REGISTRY-}otushasnwebapidialogs
+    container_name: web_api_dialogs_application
+    hostname: web_api_dialogs
+    networks:
+      - social_network_common
+    depends_on: 
+      - db-master
+      - db-slave-1
+      - otus.ha.sn.web.api
+    ports:
+      - "5082:80"
+    build:
+      context: .
+      dockerfile: ./src/Api/OTUS.HA.SN.Web.Api.Dialogs/Dockerfile
   otus.ha.sn.web.asyncapi:
     image: ${DOCKER_REGISTRY-}otushasnwebasyncapi
     container_name: web_asyncapi_application
@@ -156,7 +171,34 @@ services:
       - "15672:15672"
     networks:
       - social_network_common
-
+  tarantool:
+    container_name: "tarantool_db_master"
+    hostname: tarantool_db_master
+    image: tarantool/tarantool:2.10.8
+    command: tarantool /usr/local/share/tarantool/init.lua
+    ports:
+      - "3301:3301"
+    networks:
+      - social_network_common
+    environment:
+      - TARANTOOL_USER_NAME=web_api
+      - TARANTOOL_USER_PASSWORD=password
+    volumes:
+     - ${TARANTOOL_MASTER_DATA_PATH}:/opt/tarantool/
+     - ./deploy/tarantool/master/:/usr/local/share/tarantool/
+  jmeter-gui:
+    container_name: "jmeter-gui"
+    hostname: jmeter-gui
+    image: guitarrapc/jmeter-gui:5.3
+    tty: true
+    volumes:
+      - ./test/plan/:/root/jmeter/
+      - ./deploy/user_data.copy:/root/jmeter/user_data.copy
+    ports:
+      - 5900:5900
+      - 3390:3389
+    networks:
+      - social_network_common
 volumes:
   healthcheck-volume:
 networks:

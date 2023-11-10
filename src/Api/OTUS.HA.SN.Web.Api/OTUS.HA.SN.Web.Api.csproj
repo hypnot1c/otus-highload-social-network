@@ -31,7 +31,6 @@
     <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Model.Input.Validation\OTUS.HA.SN.Web.Api.Model.Input.Validation.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Model.Input\OTUS.HA.SN.Web.Api.Model.Input.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Model.Output\OTUS.HA.SN.Web.Api.Model.Output.csproj" />
-    <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Dialogs\OTUS.HA.SN.BusinessLogic.Dialogs.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Friends\OTUS.HA.SN.BusinessLogic.Friends.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Posts\OTUS.HA.SN.BusinessLogic.Posts.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Users\OTUS.HA.SN.BusinessLogic.Users.csproj" />

@@ -6,25 +6,25 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using OTUS.HA.SN.Data.Dialog.Context;
-using OTUS.HA.SN.Data.Dialog.Model;
 using OTUS.HS.SN.Data.Master.Context;
+using ProGaudi.Tarantool.Client;
+using ProGaudi.Tarantool.Client.Model;
 
 namespace OTUS.HA.SN.BusinessLogic
 {
   public class DialogSendCommandHandler : BaseCommandHandler, IRequestHandler<DialogSendCommand, DialogSendCommandResult>
   {
     public DialogSendCommandHandler(
-      DialogContext dialogContext,
+      Box tarantoolBox,
       IMapper mapper,
       MasterContext masterContext,
       ILogger<DialogSendCommandHandler> logger
       ) : base(mapper, masterContext, logger)
     {
-      DialogContext = dialogContext;
+      TarantoolBox = tarantoolBox;
     }
 
-    protected DialogContext DialogContext { get; }
+    protected Box TarantoolBox { get; }
 
     public async Task<DialogSendCommandResult> Handle(DialogSendCommand request, CancellationToken cancellationToken)
     {
@@ -47,15 +47,17 @@ namespace OTUS.HA.SN.BusinessLogic
         .SingleOrDefaultAsync(cancellationToken)
         ;
 
-      var dialogModel = this.Mapper.Map<UserDialogModel>(request);
-      dialogModel.FromUserId = fromUserId.Value;
-      dialogModel.ToUserId = toUserId.Value;
-
-      this.DialogContext.UserDialogs.Add(dialogModel);
-
       try
       {
-        await this.DialogContext.SaveChangesAsync(cancellationToken);
+        await this.TarantoolBox.Call<TarantoolTuple<string, int, int, string, string>>("user_dialog_insert",
+            new TarantoolTuple<string, int, int, string, string>(
+              Guid.NewGuid().ToString(),
+              fromUserId.Value,
+              toUserId.Value,
+              request.Text,
+              DateTime.UtcNow.ToString()
+            )
+          );
       }
       catch (Exception ex)
       {

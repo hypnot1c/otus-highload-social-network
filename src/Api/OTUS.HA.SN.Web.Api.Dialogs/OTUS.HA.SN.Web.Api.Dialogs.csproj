@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>6d42d661-433d-4404-9f4c-d776465d6c6f</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile></DocumentationFile>
+    <DockerfileContext>..\..\..</DockerfileContext>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_").Replace(".Dialogs", ""))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+    <PackageReference Include="dbup-postgresql" />
+    <PackageReference Include="FluentValidation.AspNetCore" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\Api\Authentication\OTUS.HA.SN.Auth.Jwt\OTUS.HA.SN.Auth.Jwt.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Dialogs.Model.Input.Validation\OTUS.HA.SN.Web.Api.Dialogs.Model.Input.Validation.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Dialogs.Model.Input\OTUS.HA.SN.Web.Api.Dialogs.Model.Input.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Dialogs.Model.Output\OTUS.HA.SN.Web.Api.Dialogs.Model.Output.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Dialogs\OTUS.HA.SN.BusinessLogic.Dialogs.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Extensions\AspNetCore\Microsoft.AspNetCode.Mvc.Filters\Microsoft.AspNetCode.Mvc.Filters.csproj" />
+  </ItemGroup>
+</Project>

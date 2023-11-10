@@ -50,4 +50,10 @@ local function init()
     })
 end
 
+local function funcs()
+   lua_insert = [[function(id, fromUserId, toUserId, text, createdAt) box.space.user_dialog:insert{id, fromUserId, toUserId, text, createdAt} end]]
+   box.schema.func.create('user_dialog_insert', {body = lua_insert})
+end
+
 box.once('init', init)
+box.once('funcs', funcs)

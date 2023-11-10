@@ -49,17 +49,13 @@ namespace OTUS.HA.SN.BusinessLogic
 
       try
       {
-        var schema = this.TarantoolBox.GetSchema();
-
-        var space = schema["user_dialog"];
-
-        await space.Insert(
-          new TarantoolTuple<string, int, int, string, string>(
-            Guid.NewGuid().ToString(),
-            fromUserId.Value,
-            toUserId.Value,
-            request.Text,
-            DateTime.UtcNow.ToString()
+        await this.TarantoolBox.Call<TarantoolTuple<string, int, int, string, string>>("user_dialog_insert",
+            new TarantoolTuple<string, int, int, string, string>(
+              Guid.NewGuid().ToString(),
+              fromUserId.Value,
+              toUserId.Value,
+              request.Text,
+              DateTime.UtcNow.ToString()
             )
           );
       }

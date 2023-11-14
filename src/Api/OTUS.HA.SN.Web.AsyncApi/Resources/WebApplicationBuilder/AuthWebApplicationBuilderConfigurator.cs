@@ -2,7 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
-namespace OTUS.HA.SN.Web.Api.Resources;
+namespace OTUS.HA.SN.Web.AsyncApi.Resources;
 
 internal class AuthWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator
 {
@@ -26,6 +26,23 @@ internal class AuthWebApplicationBuilderConfigurator : IWebApplicationBuilderCon
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true
       };
+
+      options.Events = new JwtBearerEvents
+      {
+        OnMessageReceived = context =>
+        {
+          var accessToken = context.Request.Query["access_token"];
+
+          var path = context.HttpContext.Request.Path;
+          if (!string.IsNullOrEmpty(accessToken) &&
+              (path.StartsWithSegments("/hubs")))
+          {
+            context.Token = accessToken;
+          }
+          return Task.CompletedTask;
+        }
+      };
+
       options.MapInboundClaims = false;
     })
     ;

@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DataBase\Scripts\20231007-0001.sql" />
+    <None Remove="DataBase\Scripts\20231007-0002.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="DataBase\Scripts\20231007-0001.sql" />
+    <EmbeddedResource Include="DataBase\Scripts\20231007-0002.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OTUS.HS.SN.Data.Auth.Model\OTUS.HS.SN.Data.Auth.Model.csproj" />
+  </ItemGroup>
+
+</Project>

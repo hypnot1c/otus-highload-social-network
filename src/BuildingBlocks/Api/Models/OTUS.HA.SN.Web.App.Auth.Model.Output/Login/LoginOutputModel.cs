@@ -1,4 +1,4 @@
-namespace OTUS.HA.SN.Web.Api.Model.Output
+namespace OTUS.HA.SN.Web.App.Auth.Model.Output
 {
   /// <summary>
   /// 

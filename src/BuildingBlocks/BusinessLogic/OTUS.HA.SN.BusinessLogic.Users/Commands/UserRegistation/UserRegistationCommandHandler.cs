@@ -1,5 +1,4 @@
 using System;
-using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -24,7 +23,7 @@ namespace OTUS.HA.SN.BusinessLogic
     {
       var userDBO = this.Mapper.Map<UserModel>(request);
 
-      userDBO.PasswordHash = request.Password.GetPasswordHash();
+      //userDBO.PasswordHash = request.Password.GetPasswordHash();
 
       this.MasterContext.Users.Add(userDBO);
 

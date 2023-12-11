@@ -7,6 +7,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using OTUS.HS.SN.Data.Auth.Context;
 using OTUS.HS.SN.Data.Master.Context;
 
 namespace OTUS.HA.SN.BusinessLogic
@@ -15,6 +16,7 @@ namespace OTUS.HA.SN.BusinessLogic
   {
     public LoginQueryHandler(
       IMapper mapper,
+      AuthContext authContext,
       MasterContext masterContext,
       ILogger<LoginQueryHandler> logger
       ) : base(
@@ -23,7 +25,10 @@ namespace OTUS.HA.SN.BusinessLogic
         logger
         )
     {
+      AuthContext = authContext;
     }
+
+    public AuthContext AuthContext { get; }
 
     public async Task<LoginQueryResult> Handle(LoginQuery request, CancellationToken cancellationToken)
     {
@@ -33,7 +38,7 @@ namespace OTUS.HA.SN.BusinessLogic
       try
       {
         result = await this.Mapper.ProjectTo<LoginQueryResult>(
-          this.MasterContext.Users
+          this.AuthContext.Users
           .Where(u => u.PublicId == request.Id)
           .Where(u => u.PasswordHash == hash)
           )

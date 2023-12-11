@@ -8,4 +8,8 @@
     <PackageReference Include="FluentValidation" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OTUS.HA.SN.Web.App.Auth.Model.Input\OTUS.HA.SN.Web.App.Auth.Model.Input.csproj" />
+  </ItemGroup>
+
 </Project>

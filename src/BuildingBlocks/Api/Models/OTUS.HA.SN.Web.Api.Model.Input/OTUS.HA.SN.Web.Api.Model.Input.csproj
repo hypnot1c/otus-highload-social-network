@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Text.Json" />
+    <Compile Remove="Friends\**" />
+    <EmbeddedResource Remove="Friends\**" />
+    <None Remove="Friends\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Friends\" />
+    <PackageReference Include="System.Text.Json" />
   </ItemGroup>
 
 </Project>

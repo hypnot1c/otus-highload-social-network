@@ -1,18 +1,16 @@
 using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OTUS.HA.SN.Auth.Jwt;
 using OTUS.HA.SN.BusinessLogic;
-using OTUS.HA.SN.Web.Api.Model.Input;
-using OTUS.HA.SN.Web.Api.Model.Output;
+using OTUS.HA.SN.Web.App.Auth.Model.Input;
+using OTUS.HA.SN.Web.App.Auth.Model.Output;
 
-namespace OTUS.HA.SN.Web.Api.V1.Controllers
+namespace OTUS.HA.SN.Web.App.Auth.V1.Controllers
 {
   /// <summary>
   /// 
   /// </summary>
-  [AllowAnonymous]
   public class LoginController : ApiBaseController
   {
     /// <summary>

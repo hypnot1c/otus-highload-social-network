@@ -39,7 +39,7 @@ namespace OTUS.HA.SN.BusinessLogic
         await this.MasterContext.SaveChangesAsync(cancellationToken);
         var im = this.Mapper.Map<UserCreateInputModel>(userDBO);
         im.Password = request.Password;
-        await this._webAppAuthClient.UserCreate(im);
+        await this._webAppAuthClient.UserCreate(im, cancellationToken);
 
         await tran.CommitAsync(cancellationToken);
       }

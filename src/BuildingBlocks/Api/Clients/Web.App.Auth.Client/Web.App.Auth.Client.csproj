@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Models\OTUS.HA.SN.Web.App.Auth.Model.Input\OTUS.HA.SN.Web.App.Auth.Model.Input.csproj" />
+    <ProjectReference Include="..\..\Models\OTUS.HA.SN.Web.App.Auth.Model.Output\OTUS.HA.SN.Web.App.Auth.Model.Output.csproj" />
   </ItemGroup>
 
 </Project>

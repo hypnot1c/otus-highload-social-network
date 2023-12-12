@@ -7,12 +7,12 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 COPY . .
-RUN dotnet restore "src/App/OTUS.HA.SN.Web.App.Auth/OTUS.HA.SN.Web.App.Auth.csproj"
+RUN dotnet restore "src/Apps/OTUS.HA.SN.Web.App.Auth/OTUS.HA.SN.Web.App.Auth.csproj"
 
-RUN dotnet build "src/App/OTUS.HA.SN.Web.App.Auth/OTUS.HA.SN.Web.App.Auth.csproj" -c Debug -o /app/build
+RUN dotnet build "src/Apps/OTUS.HA.SN.Web.App.Auth/OTUS.HA.SN.Web.App.Auth.csproj" -c Debug -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "src/App/OTUS.HA.SN.Web.App.Auth/OTUS.HA.SN.Web.App.Auth.csproj" -c Debug -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "src/Apps/OTUS.HA.SN.Web.App.Auth/OTUS.HA.SN.Web.App.Auth.csproj" -c Debug -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app

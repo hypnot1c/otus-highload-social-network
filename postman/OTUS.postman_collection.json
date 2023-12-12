@@ -116,7 +116,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"id\": \"d66be8b0-219f-a8bc-f2e8-fc828540df46\",\r\n    \"password\": \"password\"\r\n}",
+											"raw": "{\r\n    \"id\": \"9d626887-2acb-7a31-9476-fc9e36fb236c\",\r\n    \"password\": \"password\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -124,9 +124,9 @@
 											}
 										},
 										"url": {
-											"raw": "{{OTUS.HS.SN.Web.Api}}/v1/login",
+											"raw": "{{OTUS.HS.SN.Web.App.Auth}}/v1/login",
 											"host": [
-												"{{OTUS.HS.SN.Web.Api}}"
+												"{{OTUS.HS.SN.Web.App.Auth}}"
 											],
 											"path": [
 												"v1",
@@ -333,6 +333,72 @@
 									"response": []
 								}
 							]
+						},
+						{
+							"name": "Dialogs",
+							"item": [
+								{
+									"name": "Send message",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"text\": \"Ау, ты где?&&&&\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{OTUS.HS.SN.Web.Api.Dialogs}}/v1/dialogs/:to_user_Id/send",
+											"host": [
+												"{{OTUS.HS.SN.Web.Api.Dialogs}}"
+											],
+											"path": [
+												"v1",
+												"dialogs",
+												":to_user_Id",
+												"send"
+											],
+											"variable": [
+												{
+													"key": "to_user_Id",
+													"value": "263a2618-3b8a-7d20-1aed-5a536a3b9aba"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get list",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{OTUS.HS.SN.Web.Api.Dialogs}}/v1/dialogs/:to_user_Id/list",
+											"host": [
+												"{{OTUS.HS.SN.Web.Api.Dialogs}}"
+											],
+											"path": [
+												"v1",
+												"dialogs",
+												":to_user_Id",
+												"list"
+											],
+											"variable": [
+												{
+													"key": "to_user_Id",
+													"value": "263a2618-3b8a-7d20-1aed-5a536a3b9aba"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
 						}
 					],
 					"auth": {
@@ -340,7 +406,7 @@
 						"bearer": [
 							{
 								"key": "token",
-								"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsInN1YiI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsIm5hbWUiOiJFdGhlbCBOaWVub3ciLCJqdGkiOiJjZGI4ZDBiOC04NTZlLTQ5OWEtODUyYi00NWU1YzU4ODE4MGIiLCJuYmYiOjE2OTc5ODk5NzgsImV4cCI6MTY5Nzk5MDI3OCwiaWF0IjoxNjk3OTg5OTc4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNjEiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUyNjEifQ.2n03vY_t_S6KFtL4PC6pAtiIF5qZb5VdQwklYUDKUCeK84DtbXnhbMrSmwibsOklgcBZ_hCQW15kqcuPaPwJGw",
+								"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsInN1YiI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsIm5hbWUiOiJFdGhlbCBOaWVub3ciLCJqdGkiOiI5NzVlNGFiYy0xZjE2LTQ5MTAtYWJhNi0zYTdlMjU4YWU0YzciLCJuYmYiOjE2OTk2NDg2NDcsImV4cCI6MTY5OTY0ODk0NywiaWF0IjoxNjk5NjQ4NjQ3LCJpc3MiOiJodHRwOi8vd2ViX2FwaTo4MCIsImF1ZCI6Imh0dHA6Ly93ZWJfYXBpOjgwIn0.h4h7S8Pqc23L3_jjZWZ4Jt4LLQEvd21p3ls4szG7RQGZXwpfUJ_DVcMgQTDJuOsi7tqSRNcB6WL76rVoQUVDVA",
 								"type": "string"
 							}
 						]

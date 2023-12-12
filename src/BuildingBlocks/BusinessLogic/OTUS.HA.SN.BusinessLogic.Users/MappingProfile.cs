@@ -1,5 +1,6 @@
 using System;
 using AutoMapper;
+using OTUS.HA.SN.Web.App.Auth.Model.Input;
 using OTUS.HS.SN.Data.Master.Model;
 
 namespace OTUS.HA.SN.BusinessLogic
@@ -29,6 +30,10 @@ namespace OTUS.HA.SN.BusinessLogic
       CreateMap<UserModel, UserGetByIdQueryResult>()
         .IncludeBase<UserModel, BaseRequestResult>()
         .ForMember(d => d.Id, opt => opt.MapFrom(s => s.PublicId))
+        ;
+
+      CreateMap<UserModel, UserCreateInputModel>()
+        .ForMember(d => d.Password, opt => opt.Ignore())
         ;
     }
   }

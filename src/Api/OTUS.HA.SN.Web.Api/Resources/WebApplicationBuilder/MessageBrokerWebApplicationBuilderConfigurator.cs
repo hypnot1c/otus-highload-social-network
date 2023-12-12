@@ -7,23 +7,45 @@ internal class MessageBrokerWebApplicationBuilderConfigurator : IWebApplicationB
 {
   public WebApplicationBuilder AddServices(WebApplicationBuilder builder, IConfiguration config)
   {
-    builder.Services.AddMassTransit(x =>
+    if (builder.Environment.IsDevelopment())
     {
-      x.UsingRabbitMq((context, cfg) =>
+      builder.Services.AddMassTransit(x =>
       {
-        cfg.Host("rabbit");
-        cfg.ConfigureEndpoints(context);
-      });
-
-      x.AddRider(rider =>
-      {
-        rider.AddProducer<PostCreatedKafkaMessage>("posts-topic");
-        rider.UsingKafka((context, k) =>
+        x.UsingInMemory((context, cfg) =>
         {
-          k.Host(builder.Configuration.GetConnectionString("Kafka"));
+          cfg.ConfigureEndpoints(context);
+        });
+
+        x.AddRider(rider =>
+        {
+          rider.AddProducer<PostCreatedKafkaMessage>("posts-topic");
+          rider.UsingKafka((context, k) =>
+          {
+            k.Host(builder.Configuration.GetConnectionString("Kafka"));
+          });
         });
       });
-    });
+    }
+    else
+    {
+      builder.Services.AddMassTransit(x =>
+      {
+        x.UsingRabbitMq((context, cfg) =>
+        {
+          cfg.Host("rabbit");
+          cfg.ConfigureEndpoints(context);
+        });
+
+        x.AddRider(rider =>
+        {
+          rider.AddProducer<PostCreatedKafkaMessage>("posts-topic");
+          rider.UsingKafka((context, k) =>
+          {
+            k.Host(builder.Configuration.GetConnectionString("Kafka"));
+          });
+        });
+      });
+    }
 
     return builder;
   }

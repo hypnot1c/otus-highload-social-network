@@ -5,15 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Friends\**" />
+    <EmbeddedResource Remove="Friends\**" />
+    <None Remove="Friends\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\OTUS.HA.SN.Web.Api.Model.Input\OTUS.HA.SN.Web.Api.Model.Input.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Friends\" />
   </ItemGroup>
 
 </Project>

@@ -17,7 +17,6 @@ namespace OTUS.HS.SN.Data.Master.Model
     public DateTime BirthDate { get; set; }
     public string Biography { get; set; }
     public string City { get; set; }
-    public string PasswordHash { get; set; }
 
     public ICollection<FriendsModel> FriendOnes { get; set; }
     public ICollection<FriendsModel> FriendTwos { get; set; }

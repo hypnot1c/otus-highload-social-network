@@ -5,8 +5,7 @@ CREATE TABLE "User" (
   "Secondname"    varchar(200) NOT NULL,
   "BirthDate"     date,
   "Biography"     varchar(5000),
-  "City"          varchar(100),
-  "PasswordHash"  varchar(300)
+  "City"          varchar(100)
 );
 
 CREATE UNIQUE INDEX UIX_User_PublicId ON "User" ("PublicId");

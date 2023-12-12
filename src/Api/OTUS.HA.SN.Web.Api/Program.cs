@@ -1,4 +1,5 @@
 using AutoMapper;
+using Correlate.AspNetCore;
 using Microsoft.OpenApi.Models;
 using OTUS.HA.SN.Web.Api.Resources;
 using OTUS.HA.SN.Web.Api.V1;
@@ -37,6 +38,8 @@ using (var scope = app.Services.CreateScope())
   var backgroundQueue = scope.ServiceProvider.GetRequiredService<IBackgroundTaskQueue<IBackgroundTask>>();
   await backgroundQueue.Enqueue(cachewarmupTask, app.Lifetime.ApplicationStopping);
 }
+
+app.UseCorrelate();
 
 app.UseRouting();
 app.UseStaticFiles();

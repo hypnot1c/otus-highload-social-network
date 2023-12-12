@@ -8,9 +8,10 @@ services:
     networks:
       - social_network_common
     depends_on: 
+      - otus.ha.sn.web.app.auth
       - db-master
       - db-slave-1
-      - cache
+      - cache 
     ports:
       - "5080:80"
     build:
@@ -46,6 +47,21 @@ services:
     build:
       context: .
       dockerfile: ./src/Api/OTUS.HA.SN.Web.AsyncApi/Dockerfile
+  otus.ha.sn.web.app.auth:
+    image: ${DOCKER_REGISTRY-}otushasnwebappauth
+    container_name: web_app_auth_application
+    hostname: web_app_auth
+    networks:
+      - social_network_common
+    depends_on: 
+      - db-master
+      - db-slave-1
+      - cache
+    ports:
+      - "5083:80"
+    build:
+      context: .
+      dockerfile: ./src/Apps/OTUS.HA.SN.Web.App.Auth/Dockerfile
   db-master:
     image: postgres:15.4
     shm_size: 1gb
@@ -61,6 +77,7 @@ services:
       - ${PG_MASTER_DATA_PATH}:/var/lib/postgresql/data
       - ./deploy/psql/master/init.sh:/docker-entrypoint-initdb.d/init.sh
       - ./deploy/user_data.copy:/docker-entrypoint-initdb.d/user_data.copy
+      - ./deploy/user_data_auth.copy:/docker-entrypoint-initdb.d/user_data_auth.copy
       - ./deploy/psql/master/postgresql.conf:/tmp/postgresql.conf
       - ./deploy/psql/master/pg_hba.conf:/tmp/pg_hba.conf
   db-slave-1:

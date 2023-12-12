@@ -1,5 +1,4 @@
 using Bogus;
-using OTUS.HS.SN.Data.Master.Model;
 
 namespace OTUS.HS.SN.DB.Data.Fakers
 {

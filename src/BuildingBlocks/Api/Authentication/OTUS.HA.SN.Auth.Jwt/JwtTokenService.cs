@@ -4,7 +4,6 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using OTUS.HA.SN.Web.Api.Resources;
 
 namespace OTUS.HA.SN.Auth.Jwt
 {
@@ -30,7 +29,6 @@ namespace OTUS.HA.SN.Auth.Jwt
         {
           new Claim("Id", user.Id),
           new Claim(JwtRegisteredClaimNames.Sub, user.Id),
-          new Claim(JwtRegisteredClaimNames.Name, user.FullName),
           new Claim(JwtRegisteredClaimNames.Jti,
                 Guid.NewGuid().ToString())
         }),

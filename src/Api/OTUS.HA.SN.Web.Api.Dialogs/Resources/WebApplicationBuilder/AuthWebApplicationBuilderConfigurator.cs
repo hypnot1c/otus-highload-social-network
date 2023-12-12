@@ -2,7 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
-namespace OTUS.HA.SN.Web.Api.Resources;
+namespace OTUS.HA.SN.Web.Api.Dialogs.Resources;
 
 internal class AuthWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator
 {

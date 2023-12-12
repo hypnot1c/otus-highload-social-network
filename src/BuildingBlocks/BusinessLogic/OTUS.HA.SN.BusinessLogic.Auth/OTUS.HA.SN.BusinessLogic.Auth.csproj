@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_").Replace(".Auth", ""))</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MediatR" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\DataAccess\OTUS.HS.SN.Data.Auth.Context\OTUS.HS.SN.Data.Auth.Context.csproj" />
+		<ProjectReference Include="..\..\Extensions\Cryptography\System.Security.Cryptography.Extensions\System.Security.Cryptography.Extensions.csproj" />
+		<ProjectReference Include="..\OTUS.HA.SN.BusinessLogic.Abstractions\OTUS.HA.SN.BusinessLogic.Abstractions.csproj" />
+	</ItemGroup>
+
+</Project>

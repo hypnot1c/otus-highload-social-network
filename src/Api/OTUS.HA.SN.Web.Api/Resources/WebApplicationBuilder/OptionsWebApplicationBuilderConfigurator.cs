@@ -1,3 +1,5 @@
+using OTUS.HA.SN.Auth.Jwt;
+
 namespace OTUS.HA.SN.Web.Api.Resources;
 
 internal class OptionsWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator

@@ -1,4 +1,4 @@
-namespace OTUS.HA.SN.Web.Api.Resources;
+namespace OTUS.HA.SN.Web.Api.Dialogs.Resources;
 
 internal interface IWebApplicationBuilderConfigurator
 {

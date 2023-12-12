@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace OTUS.HA.SN.Web.Api.Model.Input
+namespace OTUS.HA.SN.Web.App.Auth.Model.Input
 {
   public class LoginInputModelValidator : AbstractValidator<LoginInputModel>
   {

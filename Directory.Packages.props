@@ -49,5 +49,10 @@
 
     <PackageVersion Include="progaudi.tarantool" Version="0.16.0" />
     <PackageVersion Include="msgpack.light" Version="2.0.1" />
+
+    <PackageVersion Include="Refit" Version="7.0.0" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="7.0.0" />
+
+    <PackageVersion Include="Correlate.AspNetCore" Version="5.2.0" />
   </ItemGroup>
 </Project>

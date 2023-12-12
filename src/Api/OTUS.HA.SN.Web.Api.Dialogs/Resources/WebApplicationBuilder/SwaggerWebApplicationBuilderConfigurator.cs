@@ -1,7 +1,7 @@
 using System.Reflection;
 using Microsoft.OpenApi.Models;
 
-namespace OTUS.HA.SN.Web.Api.Resources;
+namespace OTUS.HA.SN.Web.Api.Dialogs.Resources;
 
 internal class SwaggerWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator
 {

@@ -3,7 +3,7 @@ using ProGaudi.MsgPack.Light;
 using ProGaudi.Tarantool.Client;
 using ProGaudi.Tarantool.Client.Model;
 
-namespace OTUS.HA.SN.Web.Api.Resources;
+namespace OTUS.HA.SN.Web.Api.Dialogs.Resources;
 
 internal class TarantoolWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator
 {

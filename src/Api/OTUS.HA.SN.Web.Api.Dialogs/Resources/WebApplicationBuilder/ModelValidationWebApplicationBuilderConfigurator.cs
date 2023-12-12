@@ -1,7 +1,7 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 
-namespace OTUS.HA.SN.Web.Api.Resources;
+namespace OTUS.HA.SN.Web.Api.Dialogs.Resources;
 
 internal class ModelValidationWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator
 {

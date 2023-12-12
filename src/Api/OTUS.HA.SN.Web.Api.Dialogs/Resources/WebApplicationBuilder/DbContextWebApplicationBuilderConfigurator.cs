@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using OTUS.HS.SN.Data.Master.Context;
 
-namespace OTUS.HA.SN.Web.Api.Resources;
+namespace OTUS.HA.SN.Web.Api.Dialogs.Resources;
 
 internal class DbContextWebApplicationBuilderConfigurator : IWebApplicationBuilderConfigurator
 {

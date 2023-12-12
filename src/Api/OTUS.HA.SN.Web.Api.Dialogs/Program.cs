@@ -1,6 +1,7 @@
 using AutoMapper;
+using Correlate.AspNetCore;
 using Microsoft.OpenApi.Models;
-using OTUS.HA.SN.Web.Api.Resources;
+using OTUS.HA.SN.Web.Api.Dialogs.Resources;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,8 @@ var app = builder.Build();
 
 var mapper = app.Services.GetRequiredService<IMapper>();
 mapper.ConfigurationProvider.AssertConfigurationIsValid();
+
+app.UseCorrelate();
 
 app.UseRouting();
 app.UseStaticFiles();

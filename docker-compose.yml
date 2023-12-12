@@ -46,6 +46,21 @@ services:
     build:
       context: .
       dockerfile: ./src/Api/OTUS.HA.SN.Web.AsyncApi/Dockerfile
+  otus.ha.sn.web.app.auth:
+    image: ${DOCKER_REGISTRY-}otushasnwebappauth
+    container_name: web_app_auth_application
+    hostname: web_app_auth
+    networks:
+      - social_network_common
+    depends_on: 
+      - db-master
+      - db-slave-1
+      - cache
+    ports:
+      - "5080:80"
+    build:
+      context: .
+      dockerfile: ./src/Api/OTUS.HA.SN.Web.Api/Dockerfile
   db-master:
     image: postgres:15.4
     shm_size: 1gb

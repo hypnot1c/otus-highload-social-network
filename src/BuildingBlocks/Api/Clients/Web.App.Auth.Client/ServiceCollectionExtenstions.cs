@@ -1,3 +1,4 @@
+using Correlate.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 
@@ -10,6 +11,7 @@ namespace Web.App.Auth.Client
       services
         .AddRefitClient<IWebAppAuthClient>()
         .ConfigureHttpClient(c => c.BaseAddress = new Uri(url))
+        .CorrelateRequests("X-Correlation-Id")
         ;
 
       return services;

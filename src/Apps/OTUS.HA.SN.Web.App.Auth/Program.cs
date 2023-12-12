@@ -1,4 +1,5 @@
 using AutoMapper;
+using Correlate.AspNetCore;
 using Microsoft.OpenApi.Models;
 using OTUS.HA.SN.Web.App.Auth.Resources;
 using Swashbuckle.AspNetCore.SwaggerUI;
@@ -32,6 +33,8 @@ using (var scope = app.Services.CreateScope())
   var migrator = scope.ServiceProvider.GetRequiredService<AuthDataBaseMigrator>();
   await migrator.MigrateDatabase();
 }
+
+app.UseCorrelate();
 
 app.UseRouting();
 app.UseStaticFiles();

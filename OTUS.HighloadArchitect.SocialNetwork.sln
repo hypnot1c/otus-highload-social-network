@@ -50,6 +50,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{E04100F5-10EA-47F2-8A04-6A7B6B5A804D}"
 	ProjectSection(SolutionItems) = preProject
 		deploy\user_data.copy = deploy\user_data.copy
+		deploy\user_data_auth.copy = deploy\user_data_auth.copy
 	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{19BE487F-F7C9-4F33-8113-019C440DE04B}"
@@ -142,19 +143,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "master", "master", "{692298
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Data.Dialog.TarantoolModel", "src\BuildingBlocks\DataAccess\OTUS.HA.SN.Data.Dialog.TarantoolModel\OTUS.HA.SN.Data.Dialog.TarantoolModel.csproj", "{BD773151-4EC5-43AF-94EE-143D48970C1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HS.SN.Data.Auth.Model", "src\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.Auth.Model\OTUS.HS.SN.Data.Auth.Model.csproj", "{4F252C95-0167-4923-AE72-38AE603B9252}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HS.SN.Data.Auth.Model", "src\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.Auth.Model\OTUS.HS.SN.Data.Auth.Model.csproj", "{4F252C95-0167-4923-AE72-38AE603B9252}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HS.SN.Data.Auth.Context", "src\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.Auth.Context\OTUS.HS.SN.Data.Auth.Context.csproj", "{8CEA34C1-E120-404B-8A3B-9957C381D1E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HS.SN.Data.Auth.Context", "src\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.Auth.Context\OTUS.HS.SN.Data.Auth.Context.csproj", "{8CEA34C1-E120-404B-8A3B-9957C381D1E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Web.App.Auth.Model.Input", "src\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.App.Auth.Model.Input\OTUS.HA.SN.Web.App.Auth.Model.Input.csproj", "{F9F17F60-D11B-4F3F-9D55-C538B12856D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Web.App.Auth.Model.Input", "src\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.App.Auth.Model.Input\OTUS.HA.SN.Web.App.Auth.Model.Input.csproj", "{F9F17F60-D11B-4F3F-9D55-C538B12856D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Web.App.Auth.Model.Input.Validation", "src\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.App.Auth.Model.Input.Validation\OTUS.HA.SN.Web.App.Auth.Model.Input.Validation.csproj", "{465E9434-E435-4AC9-A1BC-94662F8D077D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Web.App.Auth.Model.Input.Validation", "src\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.App.Auth.Model.Input.Validation\OTUS.HA.SN.Web.App.Auth.Model.Input.Validation.csproj", "{465E9434-E435-4AC9-A1BC-94662F8D077D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Web.App.Auth.Model.Output", "src\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.App.Auth.Model.Output\OTUS.HA.SN.Web.App.Auth.Model.Output.csproj", "{01E9E16A-C975-4028-A237-CBE92E27C85D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Web.App.Auth.Model.Output", "src\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.App.Auth.Model.Output\OTUS.HA.SN.Web.App.Auth.Model.Output.csproj", "{01E9E16A-C975-4028-A237-CBE92E27C85D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.BusinessLogic.Auth", "src\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Auth\OTUS.HA.SN.BusinessLogic.Auth.csproj", "{BA7CFE70-D0AC-4161-9832-BA741A0B135D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.BusinessLogic.Auth", "src\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Auth\OTUS.HA.SN.BusinessLogic.Auth.csproj", "{BA7CFE70-D0AC-4161-9832-BA741A0B135D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.Web.App.Auth", "src\Apps\OTUS.HA.SN.Web.App.Auth\OTUS.HA.SN.Web.App.Auth.csproj", "{008204CB-A3FD-4515-9FB6-B1D4EFAD46FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Web.App.Auth", "src\Apps\OTUS.HA.SN.Web.App.Auth\OTUS.HA.SN.Web.App.Auth.csproj", "{008204CB-A3FD-4515-9FB6-B1D4EFAD46FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

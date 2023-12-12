@@ -1,5 +1,5 @@
 using AutoMapper;
-using OTUS.HS.SN.Data.Master.Model;
+using OTUS.HS.SN.Data.Auth.Model;
 
 namespace OTUS.HA.SN.BusinessLogic
 {

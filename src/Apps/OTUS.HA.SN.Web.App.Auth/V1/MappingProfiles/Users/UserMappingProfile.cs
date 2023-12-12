@@ -20,7 +20,6 @@ namespace OTUS.HA.SN.Web.App.Auth.V1.MappingProfiles
 
       CreateMap<LoginQueryResult, UserPrincipalModel>()
         .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id.ToString()))
-        .ForMember(d => d.FullName, opt => opt.MapFrom(s => $"{s.Firstname} {s.Secondname}"));
       ;
     }
   }

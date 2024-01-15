@@ -159,7 +159,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Web.App.Auth", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{61D0389F-28DA-4DC9-8D26-00FB485D9278}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.App.Auth.Client", "src\BuildingBlocks\Api\Clients\Web.App.Auth.Client\Web.App.Auth.Client.csproj", "{D44CC362-AA50-4AAC-BA98-0FD467CED0FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.App.Auth.Client", "src\BuildingBlocks\Api\Clients\Web.App.Auth.Client\Web.App.Auth.Client.csproj", "{D44CC362-AA50-4AAC-BA98-0FD467CED0FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "haproxy", "haproxy", "{50E3060A-13EF-4E24-972A-4B8D1AC19D84}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\haproxy\Dockerfile = deploy\haproxy\Dockerfile
+		deploy\haproxy\haproxy.cfg = deploy\haproxy\haproxy.cfg
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -386,6 +392,7 @@ Global
 		{008204CB-A3FD-4515-9FB6-B1D4EFAD46FF} = {05714CED-3435-4C5B-8569-950E5D3FDF57}
 		{61D0389F-28DA-4DC9-8D26-00FB485D9278} = {7EA04E24-6F7E-4F49-8896-356F6E00C58A}
 		{D44CC362-AA50-4AAC-BA98-0FD467CED0FD} = {61D0389F-28DA-4DC9-8D26-00FB485D9278}
+		{50E3060A-13EF-4E24-972A-4B8D1AC19D84} = {E04100F5-10EA-47F2-8A04-6A7B6B5A804D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60CA8CD7-A4B2-4BC2-A785-31E8A26B575A}

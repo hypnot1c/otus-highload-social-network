@@ -16,7 +16,7 @@ namespace OTUS.HA.SN.BusinessLogic
   {
     public LoginQueryHandler(
       IMapper mapper,
-      AuthContext authContext,
+      AuthSlave1Context authSlave1Context,
       MasterContext masterContext,
       ILogger<LoginQueryHandler> logger
       ) : base(
@@ -25,10 +25,10 @@ namespace OTUS.HA.SN.BusinessLogic
         logger
         )
     {
-      AuthContext = authContext;
+      AuthSlave1Context = authSlave1Context;
     }
 
-    public AuthContext AuthContext { get; }
+    public AuthSlave1Context AuthSlave1Context { get; }
 
     public async Task<LoginQueryResult> Handle(LoginQuery request, CancellationToken cancellationToken)
     {
@@ -38,7 +38,7 @@ namespace OTUS.HA.SN.BusinessLogic
       try
       {
         result = await this.Mapper.ProjectTo<LoginQueryResult>(
-          this.AuthContext.Users
+          this.AuthSlave1Context.Users
           .Where(u => u.PublicId == request.Id)
           .Where(u => u.PasswordHash == hash)
           )

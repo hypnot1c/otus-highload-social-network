@@ -1,6 +1,18 @@
 version: '3.9'
 
 services:
+  app-balancer-nginx:
+    image: nginx:1.25.3
+    container_name: app-balancer-nginx
+    networks:
+      - social_network_common
+    volumes:
+      - "./deploy/nginx/default.conf:/etc/nginx/conf.d/default.conf"
+    ports:
+      - "5083:5083"
+    depends_on: 
+      - otus.ha.sn.web.api
+      - otus.ha.sn.web.app.auth
   otus.ha.sn.web.api:
     image: ${DOCKER_REGISTRY-}otushasnwebapi
     container_name: web_api_application
@@ -49,7 +61,8 @@ services:
       dockerfile: ./src/Api/OTUS.HA.SN.Web.AsyncApi/Dockerfile
   otus.ha.sn.web.app.auth:
     image: ${DOCKER_REGISTRY-}otushasnwebappauth
-    container_name: web_app_auth_application
+    deploy:
+      replicas: 3
     hostname: web_app_auth
     networks:
       - social_network_common
@@ -57,11 +70,21 @@ services:
       - db-master
       - db-slave-1
       - cache
-    ports:
-      - "5083:80"
     build:
       context: .
       dockerfile: ./src/Apps/OTUS.HA.SN.Web.App.Auth/Dockerfile
+  db-balancer-haproxy:
+    image: haproxy:2.9.2
+    container_name: db-balancer-haproxy
+    networks:
+      - social_network_common
+    volumes:
+      - "./deploy/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
+    ports:
+      - "5433:5433"
+    depends_on: 
+      - otus.ha.sn.web.api
+      - otus.ha.sn.web.app.auth
   db-master:
     image: postgres:15.4
     shm_size: 1gb

@@ -9,7 +9,7 @@ services:
     volumes:
       - "./deploy/nginx/default.conf:/etc/nginx/conf.d/default.conf"
     ports:
-      - "80:80"
+      - "5083:5083"
     depends_on: 
       - otus.ha.sn.web.api
       - otus.ha.sn.web.app.auth
@@ -70,8 +70,6 @@ services:
       - db-master
       - db-slave-1
       - cache
-    ports:
-      - "5083:80"
     build:
       context: .
       dockerfile: ./src/Apps/OTUS.HA.SN.Web.App.Auth/Dockerfile

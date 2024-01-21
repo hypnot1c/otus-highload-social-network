@@ -172,6 +172,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{86B2AC78
 		deploy\nginx\default.conf = deploy\nginx\default.conf
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OTUS.HA.SN.Web.Api.Counters", "src\Api\OTUS.HA.SN.Web.Api.Counters\OTUS.HA.SN.Web.Api.Counters.csproj", "{39EEF430-9E47-4E1D-9CFF-4F6D954EA315}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OTUS.HA.SN.BusinessLogic.Counters", "src\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Counters\OTUS.HA.SN.BusinessLogic.Counters.csproj", "{AABA4C0F-268F-4E0D-84F3-221F07780F8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -330,6 +334,14 @@ Global
 		{D44CC362-AA50-4AAC-BA98-0FD467CED0FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D44CC362-AA50-4AAC-BA98-0FD467CED0FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D44CC362-AA50-4AAC-BA98-0FD467CED0FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39EEF430-9E47-4E1D-9CFF-4F6D954EA315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39EEF430-9E47-4E1D-9CFF-4F6D954EA315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39EEF430-9E47-4E1D-9CFF-4F6D954EA315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39EEF430-9E47-4E1D-9CFF-4F6D954EA315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AABA4C0F-268F-4E0D-84F3-221F07780F8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AABA4C0F-268F-4E0D-84F3-221F07780F8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AABA4C0F-268F-4E0D-84F3-221F07780F8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AABA4C0F-268F-4E0D-84F3-221F07780F8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -399,6 +411,8 @@ Global
 		{D44CC362-AA50-4AAC-BA98-0FD467CED0FD} = {61D0389F-28DA-4DC9-8D26-00FB485D9278}
 		{50E3060A-13EF-4E24-972A-4B8D1AC19D84} = {E04100F5-10EA-47F2-8A04-6A7B6B5A804D}
 		{86B2AC78-2D3E-4459-AC32-5DA16476311A} = {E04100F5-10EA-47F2-8A04-6A7B6B5A804D}
+		{39EEF430-9E47-4E1D-9CFF-4F6D954EA315} = {9FFDDAFC-EB3C-4E1D-9CF3-97CBC73FF6A0}
+		{AABA4C0F-268F-4E0D-84F3-221F07780F8F} = {09AF9CCE-AE03-44CE-BC28-BE64814DAED6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60CA8CD7-A4B2-4BC2-A785-31E8A26B575A}

@@ -65,7 +65,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "944edb3c-8488-b5e3-974a-f65b45d944f0"
+													"value": "8d7748fd-6ee9-4f68-8d4f-186b262978f5"
 												}
 											]
 										}
@@ -116,7 +116,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"id\": \"9d626887-2acb-7a31-9476-fc9e36fb236c\",\r\n    \"password\": \"password\"\r\n}",
+											"raw": "{\r\n    \"id\": \"272a5cc7-e57c-452c-a0f5-b2b35af6ba5c\",\r\n    \"password\": \"Секретная строка\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -160,7 +160,7 @@
 											"variable": [
 												{
 													"key": "friendId",
-													"value": ""
+													"value": "263a2618-3b8a-7d20-1aed-5a536a3b9aba"
 												}
 											]
 										}
@@ -186,7 +186,7 @@
 											"variable": [
 												{
 													"key": "friendId",
-													"value": ""
+													"value": "6f948519-b667-a85b-b8cb-88064310b961"
 												}
 											]
 										}
@@ -205,7 +205,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"text\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non ex et ligula laoreet egestas at ut turpis. Nulla id lorem ac augue tempus dignissim. Vestibulum purus magna, semper sed pellentesque ut, faucibus sed eros. Suspendisse potenti. Etiam aliquet vitae velit in bibendum. Nullam lacinia aliquam diam, quis tincidunt libero vestibulum id. Sed quis odio auctor, tincidunt augue a, euismod libero. Aenean sed auctor quam. Maecenas vehicula sapien sed neque gravida, nec suscipit purus hendrerit. Mauris porttitor libero sit amet arcu semper, a viverra tortor placerat. Sed vitae tincidunt nibh. Praesent dolor nulla, semper non mauris non, luctus condimentum nunc. Nulla facilisi. Integer auctor lacus eget pretium gravida.\\r\\n Praesent nec ante cursus dui vulputate mollis. Duis mattis, velit sed mattis hendrerit, velit ex cursus nunc, id molestie eros orci at mauris. Nam fermentum vel neque at faucibus. Duis et tellus arcu. Ut tempor justo in metus vestibulum dignissim at eget lacus. Etiam venenatis sapien ut nisl semper elementum. Praesent euismod velit non nunc sagittis, eu bibendum erat aliquet. Donec efficitur eros viverra est placerat, eu fermentum augue ullamcorper. Suspendisse in sodales ipsum. Sed eu lorem sit amet nulla vehicula varius id sed ex. Fusce dapibus, lectus sit amet scelerisque venenatis, felis risus sollicitudin dui, ac viverra sapien ipsum id dolor. Curabitur ut nisl eget felis dignissim mattis sit amet non sem. Fusce auctor, arcu ac laoreet fermentum, lacus diam dictum justo, ac luctus erat justo eget tortor. \"\r\n}",
+											"raw": "{\r\n    \"text\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pretium semper fermentum. Sed ac mollis nisi, laoreet efficitur mi. Cras ligula lorem, fermentum sed imperdiet sit amet, auctor quis elit. Vestibulum non augue ac sem varius viverra vitae ut risus. Phasellus quis semper purus, eget ultrices sapien. Etiam egestas lobortis enim sit amet dignissim. Sed mollis id libero eu molestie. Etiam id metus a augue ullamcorper lacinia. Proin non elit vel libero suscipit suscipit sed sit amet risus. Aliquam quis erat vel dolor interdum interdum vel eu ipsum. Nunc sodales sapien ut justo ullamcorper consectetur. \"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -258,20 +258,23 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{OTUS.HS.SN.Web.Api}}/v1/posts/get/:id",
+											"raw": "{{OTUS.HS.SN.Web.Api}}/v1/posts/feed?offset=0&limit=10",
 											"host": [
 												"{{OTUS.HS.SN.Web.Api}}"
 											],
 											"path": [
 												"v1",
 												"posts",
-												"get",
-												":id"
+												"feed"
 											],
-											"variable": [
+											"query": [
 												{
-													"key": "id",
-													"value": "c75b7c38-18f9-4dba-bbb3-e94aff5a41f9"
+													"key": "offset",
+													"value": "0"
+												},
+												{
+													"key": "limit",
+													"value": "10"
 												}
 											]
 										}
@@ -285,7 +288,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"id\": \"c75b7c38-18f9-4dba-bbb3-e94aff5a41f9\",\r\n    \"text\": \"123213432423\"\r\n}",
+											"raw": "{\r\n    \"id\": \"c75b7c38-18f9-4dba-bbb3-e94aff5a41f9\",\r\n    \"text\": \"1232134dsfsdfsdfsdf32423\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -344,7 +347,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"text\": \"Ау, ты где?&&&&\"\r\n}",
+											"raw": "{\r\n    \"text\": \"Ау, ты где?&&&&11111222233333\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -399,6 +402,37 @@
 									"response": []
 								}
 							]
+						},
+						{
+							"name": "Counters",
+							"item": [
+								{
+									"name": "User counter get by id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{OTUS.HS.SN.Web.Api.Counters}}/v1/counters/get/:id",
+											"host": [
+												"{{OTUS.HS.SN.Web.Api.Counters}}"
+											],
+											"path": [
+												"v1",
+												"counters",
+												"get",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "8d7748fd-6ee9-4f68-8d4f-186b262978f5"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
 						}
 					],
 					"auth": {
@@ -406,7 +440,7 @@
 						"bearer": [
 							{
 								"key": "token",
-								"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsInN1YiI6ImQ2NmJlOGIwLTIxOWYtYThiYy1mMmU4LWZjODI4NTQwZGY0NiIsIm5hbWUiOiJFdGhlbCBOaWVub3ciLCJqdGkiOiI5NzVlNGFiYy0xZjE2LTQ5MTAtYWJhNi0zYTdlMjU4YWU0YzciLCJuYmYiOjE2OTk2NDg2NDcsImV4cCI6MTY5OTY0ODk0NywiaWF0IjoxNjk5NjQ4NjQ3LCJpc3MiOiJodHRwOi8vd2ViX2FwaTo4MCIsImF1ZCI6Imh0dHA6Ly93ZWJfYXBpOjgwIn0.h4h7S8Pqc23L3_jjZWZ4Jt4LLQEvd21p3ls4szG7RQGZXwpfUJ_DVcMgQTDJuOsi7tqSRNcB6WL76rVoQUVDVA",
+								"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImM3Y2I5OGY1LTVhYTMtNGMyYi1hYWFiLTk5MmM3N2Y4ZDE2MyIsInN1YiI6ImM3Y2I5OGY1LTVhYTMtNGMyYi1hYWFiLTk5MmM3N2Y4ZDE2MyIsImp0aSI6ImJlNGE4ZGNhLWM3OWYtNDk0My1hYWFiLWE5OTQ4ZjBjM2U4ZCIsIm5iZiI6MTcwNTM0ODEwNCwiZXhwIjoxNzA1MzQ4NDA0LCJpYXQiOjE3MDUzNDgxMDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIwNyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIwNyJ9.CDb0aEdD0DLX3mb_eDdEh1i18Ck4yIftmhODFtdBqz0D3DGzAyJmY0HG4VrGSmbdOFnappmSRFB8qMGbzhcrQQ",
 								"type": "string"
 							}
 						]

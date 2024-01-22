@@ -24,6 +24,7 @@ namespace OTUS.HA.SN.BusinessLogic
 
       CreateMap<PostModel, PostCreatedNotification>()
         .ForMember(d => d.PostId, opt => opt.MapFrom(s => s.Id))
+        .ForMember(d => d.AuthorPublicId, opt => opt.Ignore())
         ;
 
       CreateMap<PostModel, BaseRequestResult>()

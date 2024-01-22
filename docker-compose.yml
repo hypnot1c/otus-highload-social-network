@@ -29,6 +29,20 @@ services:
     build:
       context: .
       dockerfile: ./src/Api/OTUS.HA.SN.Web.Api/Dockerfile
+  otus.ha.sn.web.api.counters:
+    image: ${DOCKER_REGISTRY-}otushasnwebapicounters
+    container_name: web_api_counters_application
+    hostname: web_api_counters
+    networks:
+      - social_network_common
+    depends_on: 
+      - otus.ha.sn.web.app.auth
+      - cache 
+    ports:
+      - "5084:80"
+    build:
+      context: .
+      dockerfile: ./src/Api/OTUS.HA.SN.Web.Api.Counters/Dockerfile
   otus.ha.sn.web.api.dialogs:
     image: ${DOCKER_REGISTRY-}otushasnwebapidialogs
     container_name: web_api_dialogs_application

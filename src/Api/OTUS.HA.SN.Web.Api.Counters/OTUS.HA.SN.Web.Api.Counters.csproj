@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>2974add5-d861-4262-8995-2a9e08abcd04</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile></DocumentationFile>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+    <PackageReference Include="Correlate.AspNetCore" />
+    <PackageReference Include="MassTransit.Kafka" />
+    <PackageReference Include="MassTransit.RabbitMQ" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\Api\Authentication\OTUS.HA.SN.Auth.Jwt.Abstractions\OTUS.HA.SN.Auth.Jwt.Abstractions.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Api\Models\OTUS.HA.SN.Web.Api.Model.Output\OTUS.HA.SN.Web.Api.Model.Output.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\BusinessLogic\OTUS.HA.SN.BusinessLogic.Counters\OTUS.HA.SN.BusinessLogic.Counters.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\DataAccess\OTUS.HS.SN.Data.DataService.DistributedCache\OTUS.HS.SN.Data.DataService.DistributedCache.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\EventBus\OTUS.HA.SN.Kafka.Message\OTUS.HA.SN.Kafka.Message.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Extensions\AspNetCore\Microsoft.AspNetCode.Mvc.Filters\Microsoft.AspNetCode.Mvc.Filters.csproj" />
+  </ItemGroup>
+
+</Project>

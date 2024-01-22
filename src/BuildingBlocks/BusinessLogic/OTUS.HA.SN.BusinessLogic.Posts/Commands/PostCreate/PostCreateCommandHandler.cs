@@ -56,6 +56,7 @@ namespace OTUS.HA.SN.BusinessLogic
       }
 
       var notif = this.Mapper.Map<PostCreatedNotification>(postModel);
+      notif.AuthorPublicId = request.AuthorId;
 
       await this.Mediator.Publish(notif, cancellationToken);
 

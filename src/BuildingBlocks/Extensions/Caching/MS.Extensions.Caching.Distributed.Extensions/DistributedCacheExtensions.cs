@@ -7,7 +7,7 @@ namespace Microsoft.Extensions.Caching.Distributed
 {
   public static class DistributedCacheExtensions
   {
-    public static async Task<T> GetOrCreate<T>(this IDistributedCache cache, string key, Func<DistributedCacheEntryOptions, CancellationToken, Task<T>> source, CancellationToken cancellationToken) where T : class
+    public static async Task<T> GetOrCreate<T>(this IDistributedCache cache, string key, Func<DistributedCacheEntryOptions, CancellationToken, Task<T>> source, CancellationToken cancellationToken)
     {
       var entry = await cache.GetStringAsync(key, cancellationToken);
 

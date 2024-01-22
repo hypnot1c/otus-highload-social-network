@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\Caching\MS.Extensions.Caching.Distributed.Extensions\MS.Extensions.Caching.Distributed.Extensions.csproj" />
     <ProjectReference Include="..\OTUS.HA.SN.BusinessLogic.Abstractions\OTUS.HA.SN.BusinessLogic.Abstractions.csproj" />
   </ItemGroup>
 

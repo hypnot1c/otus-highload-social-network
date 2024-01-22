@@ -48,7 +48,6 @@ namespace OTUS.HA.SN.Web.Api.V1.Mediator
       await this.backgroundTaskQueue.Enqueue(task, cancellationToken);
 
 
-
       await this._busControl.StartAsync(cancellationToken);
 
       var message = this.mapper.Map<PostCreatedKafkaMessage>(notification);

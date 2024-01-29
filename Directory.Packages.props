@@ -37,5 +37,6 @@
     <PackageVersion Include="Refit" Version="7.0.0" />
     <PackageVersion Include="Refit.HttpClientFactory" Version="7.0.0" />
     <PackageVersion Include="Correlate.AspNetCore" Version="5.2.0" />
+    <PackageVersion Include="prometheus-net.AspNetCore" Version="8.2.1" />
   </ItemGroup>
 </Project>

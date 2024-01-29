@@ -268,6 +268,8 @@ services:
     container_name: "zabbix-server"
     hostname: "zabbix-server"
     image: zabbix/zabbix-server-pgsql:alpine-6.0-latest
+    depends_on:
+      - zabbix-agent2
     ports:
       - 10051:10051
     volumes_from: 
@@ -284,13 +286,15 @@ services:
     container_name: "zabbix-web-ui"
     hostname: "zabbix-web-ui"
     image: zabbix/zabbix-web-nginx-pgsql:alpine-6.0-latest
+    depends_on:
+      - zabbix-server
     ports:
       - 6443:8443
       - 6080:8080
-    volumes:
-      - ${ZABBIX_ROOT}/nginx/ssl:/etc/ssl/nginx:ro
     networks:
       - social_network_common
+    volumes:
+      - ${ZABBIX_ROOT}/nginx/ssl:/etc/ssl/nginx:ro
     environment:
       - DB_SERVER_HOST=postgres_db_master
       - POSTGRES_USER=zabbix
@@ -308,6 +312,28 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     user: 0:0
+  prometheus:
+    image: prom/prometheus:v2.49.1
+    container_name: prometheus
+    hostname: "prometheus"
+    networks:
+      - social_network_common
+    ports:
+      - 9090:9090
+    volumes:
+      - ./deploy/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:10.3.1
+    networks:
+      - social_network_common
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./deploy/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./deploy/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
 volumes:
   healthcheck-volume:
 networks:

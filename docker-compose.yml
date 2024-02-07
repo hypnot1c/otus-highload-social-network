@@ -4,6 +4,7 @@ services:
   app-balancer-nginx:
     image: nginx:1.25.3
     container_name: app-balancer-nginx
+    hostname: app-balancer-nginx
     networks:
       - social_network_common
     volumes:

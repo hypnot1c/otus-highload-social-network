@@ -4,6 +4,7 @@ services:
   app-balancer-nginx:
     image: nginx:1.25.3
     container_name: app-balancer-nginx
+    hostname: app-balancer-nginx
     networks:
       - social_network_common
     volumes:
@@ -253,6 +254,87 @@ services:
       - 3390:3389
     networks:
       - social_network_common
+  zabbix-snmptraps:
+    container_name: "zabbix-snmptraps"
+    hostname: "zabbix-snmptraps"
+    image: zabbix/zabbix-snmptraps:alpine-6.0-latest
+    ports:
+      - 162:1162/udp
+    volumes:
+      - ${ZABBIX_ROOT}/snmptraps:/var/lib/zabbix/snmptraps:rw
+      - ${ZABBIX_ROOT}/mibs:/usr/share/snmp/mibs:ro
+    networks:
+      - social_network_common
+  zabbix-server:
+    container_name: "zabbix-server"
+    hostname: "zabbix-server"
+    image: zabbix/zabbix-server-pgsql:alpine-6.0-latest
+    depends_on:
+      - zabbix-agent2
+    ports:
+      - 10051:10051
+    volumes_from: 
+      - zabbix-snmptraps
+    networks:
+      - social_network_common
+    environment:
+      - DB_SERVER_HOST=postgres_db_master
+      - POSTGRES_USER=zabbix
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=otus_social_network_zabbix
+      - ZBX_ENABLE_SNMP_TRAPS=true
+  zabbix-web-ui:
+    container_name: "zabbix-web-ui"
+    hostname: "zabbix-web-ui"
+    image: zabbix/zabbix-web-nginx-pgsql:alpine-6.0-latest
+    depends_on:
+      - zabbix-server
+    ports:
+      - 6443:8443
+      - 6080:8080
+    networks:
+      - social_network_common
+    volumes:
+      - ${ZABBIX_ROOT}/nginx/ssl:/etc/ssl/nginx:ro
+    environment:
+      - DB_SERVER_HOST=postgres_db_master
+      - POSTGRES_USER=zabbix
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=otus_social_network_zabbix
+      - ZBX_SERVER_HOST=zabbix-server
+  zabbix-agent2:
+    container_name: "zabbix-agent2"
+    hostname: "zabbix-agent2"
+    image: zabbix/zabbix-agent2:alpine-6.0-latest
+    networks:
+      - social_network_common
+    environment:
+      - ZBX_SERVER_HOST=zabbix-server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    user: 0:0
+  prometheus:
+    image: prom/prometheus:v2.49.1
+    container_name: prometheus
+    hostname: "prometheus"
+    networks:
+      - social_network_common
+    ports:
+      - 9090:9090
+    volumes:
+      - ./deploy/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:10.3.1
+    networks:
+      - social_network_common
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./deploy/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./deploy/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
 volumes:
   healthcheck-volume:
 networks:

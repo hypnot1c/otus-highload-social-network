@@ -2,6 +2,7 @@ using AutoMapper;
 using Correlate.AspNetCore;
 using Microsoft.OpenApi.Models;
 using OTUS.HA.SN.Web.Api.Dialogs.Resources;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,7 @@ mapper.ConfigurationProvider.AssertConfigurationIsValid();
 app.UseCorrelate();
 
 app.UseRouting();
+app.UseHttpMetrics();
 app.UseStaticFiles();
 app.MapControllers();
 
@@ -45,5 +47,9 @@ app.UseSwagger(c =>
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseEndpoints(endpoints =>
+{
+  endpoints.MapMetrics();
+});
 
 await app.RunAsync();

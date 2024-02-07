@@ -10,12 +10,12 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="WEB_API_HOST" elementType="Argument">
             <stringProp name="Argument.name">WEB_API_HOST</stringProp>
-            <stringProp name="Argument.value">web_api</stringProp>
+            <stringProp name="Argument.value">app-balancer-nginx</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="WEB_API_PORT" elementType="Argument">
             <stringProp name="Argument.name">WEB_API_PORT</stringProp>
-            <stringProp name="Argument.value">80</stringProp>
+            <stringProp name="Argument.value">5083</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="WEB_API_DIALOG_HOST" elementType="Argument">
